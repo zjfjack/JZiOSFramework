@@ -12,6 +12,7 @@
 		8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C9205258CF0002F955 /* UIFontExtension.swift */; };
 		8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664CB2052590F0002F955 /* NSObjectExtension.swift */; };
 		8E8664CE205259FF0002F955 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */; };
+		8EE3D9CC205738B1000CBF80 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8E8664C9205258CF0002F955 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		8E8664CB2052590F0002F955 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
+		8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				8E8664C9205258CF0002F955 /* UIFontExtension.swift */,
 				8E8664CB2052590F0002F955 /* NSObjectExtension.swift */,
 				8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */,
+				8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE3D9CC205738B1000CBF80 /* UIViewExtension.swift in Sources */,
 				8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */,
 				8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */,
 				8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */,
