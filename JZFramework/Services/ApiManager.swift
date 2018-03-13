@@ -35,7 +35,7 @@ open class ApiManager {
         configuration.httpAdditionalHeaders = [
             "Content-Type": "application/json",
             "Authorization": "Bearer \(accessToken)",
-            "X-Content-Encoding": "gzip"
+//            "X-Content-Encoding": "gzip"
         ]
         
         additionalHeader.forEach {

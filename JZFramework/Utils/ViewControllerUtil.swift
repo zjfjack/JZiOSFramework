@@ -25,7 +25,7 @@ open class ViewControllerUtil {
         
         let loadingViewHeight: CGFloat = 120
         
-        let loadingView = UIView(backgroundColor: UIColor(rgb: 0x444444).withAlphaComponent(0.7))
+        let loadingView = UIView(backgroundColor: UIColor(hex: 0x444444).withAlphaComponent(0.7))
         loadingView.setCornerRadius(10)
         
         let lblText = BaseLabel(textColor: .white)

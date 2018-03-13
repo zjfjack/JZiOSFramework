@@ -10,15 +10,15 @@ import UIKit
 
 extension UIButton{
     
-    public static func getDefaultButton(title: String, font: UIFont?=nil,
-                                        titleColor: UIColor?=nil, backgroundColor: UIColor?=nil) -> UIButton {
+    public static func getDefaultButton(title: String, font: UIFont = UIFont.getRegularText(Constants.defaultFontSize),
+                                        titleColor: UIColor?=nil, backgroundColor: UIColor = Constants.defaultViewBackgroundColor) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
-        button.titleLabel?.font = font ?? UIFont.getRegularText(Constants.defaultFontSize)
+        button.titleLabel?.font = font
         if let color = titleColor{
             button.setTitleColor(color, for: .normal)
         }
-        button.backgroundColor = backgroundColor ?? Constants.defaultViewBackgroundColor
+        button.backgroundColor = backgroundColor
         return button
     }
     

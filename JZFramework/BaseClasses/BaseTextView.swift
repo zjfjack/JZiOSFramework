@@ -10,16 +10,16 @@ import UIKit
 
 class BaseTextView: UITextView {
     
-    public init(text: String = "", font: UIFont = UIFont.getRegularText(Constants.defaultFontSize),
-                textColor: UIColor = Constants.defaultTextColor, backgroundColor: UIColor = Constants.defaultViewBackgroundColor) {
+    public init(text: String? = nil, font: UIFont? = nil,
+                textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         
         super.init(frame: .zero, textContainer: nil)
         textContainerInset = .zero
         textContainer.lineFragmentPadding = 0
-        self.text = text
-        self.font = font
-        self.textColor = textColor
-        self.backgroundColor = backgroundColor
+        self.text = text ?? ""
+        self.font = font ?? UIFont.getRegularText(Constants.defaultFontSize)
+        self.textColor = textColor ?? Constants.defaultTextColor
+        self.backgroundColor = backgroundColor ?? Constants.defaultViewBackgroundColor
     }
     
     public required init?(coder aDecoder: NSCoder) {

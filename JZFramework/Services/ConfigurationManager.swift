@@ -9,8 +9,10 @@
 
 class ConfigurationManager {
     
+    let configureKeyBaseUrl = "baseUrl"
+    
     public enum Environment{
-        case develop, test, live, release
+        case develop, test, live, prod
     }
     
     public let properties:[String:Any]
@@ -22,9 +24,9 @@ class ConfigurationManager {
         var configFileName = ""
         switch environment {
         case .live:
-//            configFileName = "config_live"
+            configFileName = "config_live"
             break
-        case .release:
+        case .prod:
             break
         case.test:
             break
@@ -42,6 +44,15 @@ class ConfigurationManager {
         }
         else {
             fatalError("Config file: " + configFileName + " is not found.")
+        }
+    }
+    
+    public func getBaseUrl() -> String {
+        
+        if let baseUrl = properties[configureKeyBaseUrl] as? String{
+            return baseUrl
+        } else {
+            fatalError(configureKeyBaseUrl + " is missing in the config file.")
         }
     }
     

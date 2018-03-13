@@ -10,16 +10,16 @@ import UIKit
 
 class BaseTextField: UITextField {
     
-    public init(text: String, placeholder: String, style: UITextBorderStyle = UITextBorderStyle.roundedRect,
-                font: UIFont = UIFont.getRegularText(Constants.defaultFontSize), textColor: UIColor = Constants.defaultTextColor) {
+    public init(text: String? = nil, placeholder: String? = nil, style: UITextBorderStyle? = nil,
+                font: UIFont? = nil, textColor: UIColor? = nil) {
         
         super.init(frame: .zero)
         
-        self.text = text
-        self.placeholder = placeholder
-        self.borderStyle = style
-        self.font = font
-        self.textColor = textColor
+        self.text = text ?? ""
+        self.placeholder = placeholder ?? ""
+        self.borderStyle = style ?? UITextBorderStyle.roundedRect
+        self.font = font ?? UIFont.getRegularText(Constants.defaultFontSize)
+        self.textColor = textColor ?? Constants.defaultTextColor
     }
     
     required public init?(coder aDecoder: NSCoder) {

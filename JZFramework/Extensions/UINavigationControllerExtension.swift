@@ -13,4 +13,13 @@ extension UINavigationController {
         self.pushViewController(viewController, animated: animated)
     }
     
+    public func popToViewController(_ className: AnyClass) {
+        
+        for vc in viewControllers {
+            if vc.isKind(of: className) {
+                self.popToViewController(vc, animated: true)
+                break
+            }
+        }
+    }
 }

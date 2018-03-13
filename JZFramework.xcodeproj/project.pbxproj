@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E79DB3C205898060099C2CF /* CopyableLabel.swift */; };
 		8E8664C0205253DA0002F955 /* JZFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E8664BE205253DA0002F955 /* JZFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C7205258580002F955 /* UIColorExtension.swift */; };
 		8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C9205258CF0002F955 /* UIFontExtension.swift */; };
@@ -34,12 +35,14 @@
 		8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F620577966000CBF80 /* BaseTextView.swift */; };
 		8EE3D9FA20577B2C000CBF80 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F920577B2C000CBF80 /* ApiManager.swift */; };
 		8EE3D9FC20577D8C000CBF80 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9FB20577D8C000CBF80 /* FileService.swift */; };
+		8EE3D9FE2057A81F000CBF80 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9FD2057A81F000CBF80 /* UIImageViewExtension.swift */; };
 		D0C91193A8DF8915FFA0BA38 /* Pods_JZFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.release.xcconfig"; sourceTree = "<group>"; };
 		7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		8E79DB3C205898060099C2CF /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		8E8664BB205253DA0002F955 /* JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8664BE205253DA0002F955 /* JZFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZFramework.h; sourceTree = "<group>"; };
 		8E8664BF205253DA0002F955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		8EE3D9F620577966000CBF80 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		8EE3D9F920577B2C000CBF80 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		8EE3D9FB20577D8C000CBF80 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		8EE3D9FD2057A81F000CBF80 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -101,6 +105,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8E79DB3B205897D70099C2CF /* CopyableLabel */ = {
+			isa = PBXGroup;
+			children = (
+				8E79DB3C205898060099C2CF /* CopyableLabel.swift */,
+			);
+			path = CopyableLabel;
+			sourceTree = "<group>";
+		};
 		8E8664B1205253DA0002F955 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +138,7 @@
 				8EE3D9DC2057584A000CBF80 /* BaseClasses */,
 				8EE3D9D120574BF0000CBF80 /* Utils */,
 				8E8664C6205258390002F955 /* Extensions */,
+				8E79DB3B205897D70099C2CF /* CopyableLabel */,
 				8EE3D9ED2057747E000CBF80 /* Resources */,
 				8E8664BE205253DA0002F955 /* JZFramework.h */,
 				8E8664BF205253DA0002F955 /* Info.plist */,
@@ -147,6 +160,7 @@
 				8EE3D9D620575047000CBF80 /* DateExtension.swift */,
 				8EE3D9DF20575E0A000CBF80 /* UserDefaultsExtension.swift */,
 				8EE3D9E120575F19000CBF80 /* UINavigationControllerExtension.swift */,
+				8EE3D9FD2057A81F000CBF80 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +338,7 @@
 				8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */,
 				8EE3D9E820576240000CBF80 /* AlertUtil.swift in Sources */,
 				8EE3D9F1205775EE000CBF80 /* BaseNavigationController.swift in Sources */,
+				8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */,
 				8EE3D9EA205762DA000CBF80 /* PhotoUtil.swift in Sources */,
 				8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */,
 				8EE3D9CE20574B2D000CBF80 /* UITableViewExtension.swift in Sources */,
@@ -337,6 +352,7 @@
 				8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */,
 				8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */,
 				8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */,
+				8EE3D9FE2057A81F000CBF80 /* UIImageViewExtension.swift in Sources */,
 				8EE3D9EC205772B0000CBF80 /* ConfigurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

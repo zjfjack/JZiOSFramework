@@ -10,14 +10,14 @@ open class BaseLabel: UILabel {
     
     let defaultBackgroundColor = UIColor.clear
     
-    public init(text: String = "", font: UIFont = UIFont.getRegularText(Constants.defaultFontSize),
-                textColor: UIColor = Constants.defaultTextColor, backgroundColor: UIColor = Constants.defaultViewBackgroundColor) {
+    public init(text: String? = nil, font: UIFont? = nil,
+                textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         
         super.init(frame: .zero)
-        self.text = text
-        self.font = font
-        self.textColor = textColor
-        self.backgroundColor = backgroundColor
+        self.text = text ?? ""
+        self.font = font ?? UIFont.getRegularText(Constants.defaultFontSize)
+        self.textColor = textColor ?? Constants.defaultTextColor
+        self.backgroundColor = backgroundColor ?? Constants.defaultViewBackgroundColor
     }
     
     required public init?(coder aDecoder: NSCoder) {
