@@ -13,9 +13,33 @@
 		8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664CB2052590F0002F955 /* NSObjectExtension.swift */; };
 		8E8664CE205259FF0002F955 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */; };
 		8EE3D9CC205738B1000CBF80 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */; };
+		8EE3D9CE20574B2D000CBF80 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CD20574B2D000CBF80 /* UITableViewExtension.swift */; };
+		8EE3D9D020574B80000CBF80 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CF20574B80000CBF80 /* UIButtonExtension.swift */; };
+		8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9D220574C76000CBF80 /* Constants.swift */; };
+		8EE3D9D520575009000CBF80 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9D420575009000CBF80 /* UIStackViewExtension.swift */; };
+		8EE3D9D720575047000CBF80 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9D620575047000CBF80 /* DateExtension.swift */; };
+		8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9D820575230000CBF80 /* DeviceUtil.swift */; };
+		8EE3D9DE2057585D000CBF80 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9DD2057585D000CBF80 /* BaseLabel.swift */; };
+		8EE3D9E020575E0A000CBF80 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9DF20575E0A000CBF80 /* UserDefaultsExtension.swift */; };
+		8EE3D9E220575F19000CBF80 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9E120575F19000CBF80 /* UINavigationControllerExtension.swift */; };
+		8EE3D9E420575FF5000CBF80 /* PublicUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9E320575FF5000CBF80 /* PublicUtil.swift */; };
+		8EE3D9E620576155000CBF80 /* ViewControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9E520576155000CBF80 /* ViewControllerUtil.swift */; };
+		8EE3D9E820576240000CBF80 /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9E720576240000CBF80 /* AlertUtil.swift */; };
+		8EE3D9EA205762DA000CBF80 /* PhotoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9E9205762DA000CBF80 /* PhotoUtil.swift */; };
+		8EE3D9EC205772B0000CBF80 /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9EB205772B0000CBF80 /* ConfigurationManager.swift */; };
+		8EE3D9EF20577555000CBF80 /* config_dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EE3D9EE20577555000CBF80 /* config_dev.plist */; };
+		8EE3D9F1205775EE000CBF80 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F0205775EE000CBF80 /* BaseNavigationController.swift */; };
+		8EE3D9F32057762A000CBF80 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F22057762A000CBF80 /* BaseViewController.swift */; };
+		8EE3D9F5205776D9000CBF80 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F4205776D9000CBF80 /* BaseTextField.swift */; };
+		8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F620577966000CBF80 /* BaseTextView.swift */; };
+		8EE3D9FA20577B2C000CBF80 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F920577B2C000CBF80 /* ApiManager.swift */; };
+		8EE3D9FC20577D8C000CBF80 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9FB20577D8C000CBF80 /* FileService.swift */; };
+		D0C91193A8DF8915FFA0BA38 /* Pods_JZFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.release.xcconfig"; sourceTree = "<group>"; };
+		7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8664BB205253DA0002F955 /* JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8664BE205253DA0002F955 /* JZFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZFramework.h; sourceTree = "<group>"; };
 		8E8664BF205253DA0002F955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -24,6 +48,28 @@
 		8E8664CB2052590F0002F955 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
 		8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		8EE3D9CD20574B2D000CBF80 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		8EE3D9CF20574B80000CBF80 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		8EE3D9D220574C76000CBF80 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8EE3D9D420575009000CBF80 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		8EE3D9D620575047000CBF80 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		8EE3D9D820575230000CBF80 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
+		8EE3D9DD2057585D000CBF80 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		8EE3D9DF20575E0A000CBF80 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		8EE3D9E120575F19000CBF80 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		8EE3D9E320575FF5000CBF80 /* PublicUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUtil.swift; sourceTree = "<group>"; };
+		8EE3D9E520576155000CBF80 /* ViewControllerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtil.swift; sourceTree = "<group>"; };
+		8EE3D9E720576240000CBF80 /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
+		8EE3D9E9205762DA000CBF80 /* PhotoUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUtil.swift; sourceTree = "<group>"; };
+		8EE3D9EB205772B0000CBF80 /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
+		8EE3D9EE20577555000CBF80 /* config_dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config_dev.plist; sourceTree = "<group>"; };
+		8EE3D9F0205775EE000CBF80 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		8EE3D9F22057762A000CBF80 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8EE3D9F4205776D9000CBF80 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
+		8EE3D9F620577966000CBF80 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
+		8EE3D9F920577B2C000CBF80 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		8EE3D9FB20577D8C000CBF80 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +77,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C91193A8DF8915FFA0BA38 /* Pods_JZFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DDAC9F25BD052B85370EECE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66A41B959F7F3E5BAC9AF327 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */,
+				3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8E8664B1205253DA0002F955 = {
 			isa = PBXGroup;
 			children = (
 				8E8664BD205253DA0002F955 /* JZFramework */,
 				8E8664BC205253DA0002F955 /* Products */,
+				66A41B959F7F3E5BAC9AF327 /* Pods */,
+				0DDAC9F25BD052B85370EECE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,7 +122,11 @@
 		8E8664BD205253DA0002F955 /* JZFramework */ = {
 			isa = PBXGroup;
 			children = (
+				8EE3D9F820577B16000CBF80 /* Services */,
+				8EE3D9DC2057584A000CBF80 /* BaseClasses */,
+				8EE3D9D120574BF0000CBF80 /* Utils */,
 				8E8664C6205258390002F955 /* Extensions */,
+				8EE3D9ED2057747E000CBF80 /* Resources */,
 				8E8664BE205253DA0002F955 /* JZFramework.h */,
 				8E8664BF205253DA0002F955 /* Info.plist */,
 			);
@@ -71,8 +141,57 @@
 				8E8664CB2052590F0002F955 /* NSObjectExtension.swift */,
 				8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */,
 				8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */,
+				8EE3D9CD20574B2D000CBF80 /* UITableViewExtension.swift */,
+				8EE3D9CF20574B80000CBF80 /* UIButtonExtension.swift */,
+				8EE3D9D420575009000CBF80 /* UIStackViewExtension.swift */,
+				8EE3D9D620575047000CBF80 /* DateExtension.swift */,
+				8EE3D9DF20575E0A000CBF80 /* UserDefaultsExtension.swift */,
+				8EE3D9E120575F19000CBF80 /* UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8EE3D9D120574BF0000CBF80 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3D9D220574C76000CBF80 /* Constants.swift */,
+				8EE3D9D820575230000CBF80 /* DeviceUtil.swift */,
+				8EE3D9E320575FF5000CBF80 /* PublicUtil.swift */,
+				8EE3D9E520576155000CBF80 /* ViewControllerUtil.swift */,
+				8EE3D9E720576240000CBF80 /* AlertUtil.swift */,
+				8EE3D9E9205762DA000CBF80 /* PhotoUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8EE3D9DC2057584A000CBF80 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3D9DD2057585D000CBF80 /* BaseLabel.swift */,
+				8EE3D9F0205775EE000CBF80 /* BaseNavigationController.swift */,
+				8EE3D9F22057762A000CBF80 /* BaseViewController.swift */,
+				8EE3D9F4205776D9000CBF80 /* BaseTextField.swift */,
+				8EE3D9F620577966000CBF80 /* BaseTextView.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		8EE3D9ED2057747E000CBF80 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3D9EE20577555000CBF80 /* config_dev.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8EE3D9F820577B16000CBF80 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8EE3D9EB205772B0000CBF80 /* ConfigurationManager.swift */,
+				8EE3D9F920577B2C000CBF80 /* ApiManager.swift */,
+				8EE3D9FB20577D8C000CBF80 /* FileService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,10 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E8664C3205253DA0002F955 /* Build configuration list for PBXNativeTarget "JZFramework" */;
 			buildPhases = (
+				B19D32F86EB4F35B422C65C4 /* [CP] Check Pods Manifest.lock */,
 				8E8664B6205253DA0002F955 /* Sources */,
 				8E8664B7205253DA0002F955 /* Frameworks */,
 				8E8664B8205253DA0002F955 /* Headers */,
 				8E8664B9205253DA0002F955 /* Resources */,
+				796B95BEB81F81DF6305E23D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,21 +266,78 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE3D9EF20577555000CBF80 /* config_dev.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		796B95BEB81F81DF6305E23D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B19D32F86EB4F35B422C65C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JZFramework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E8664B6205253DA0002F955 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE3D9E620576155000CBF80 /* ViewControllerUtil.swift in Sources */,
 				8EE3D9CC205738B1000CBF80 /* UIViewExtension.swift in Sources */,
+				8EE3D9DE2057585D000CBF80 /* BaseLabel.swift in Sources */,
+				8EE3D9D720575047000CBF80 /* DateExtension.swift in Sources */,
+				8EE3D9F5205776D9000CBF80 /* BaseTextField.swift in Sources */,
+				8EE3D9E020575E0A000CBF80 /* UserDefaultsExtension.swift in Sources */,
+				8EE3D9F32057762A000CBF80 /* BaseViewController.swift in Sources */,
+				8EE3D9E420575FF5000CBF80 /* PublicUtil.swift in Sources */,
 				8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */,
+				8EE3D9E820576240000CBF80 /* AlertUtil.swift in Sources */,
+				8EE3D9F1205775EE000CBF80 /* BaseNavigationController.swift in Sources */,
+				8EE3D9EA205762DA000CBF80 /* PhotoUtil.swift in Sources */,
 				8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */,
+				8EE3D9CE20574B2D000CBF80 /* UITableViewExtension.swift in Sources */,
+				8EE3D9E220575F19000CBF80 /* UINavigationControllerExtension.swift in Sources */,
+				8EE3D9D020574B80000CBF80 /* UIButtonExtension.swift in Sources */,
+				8EE3D9FA20577B2C000CBF80 /* ApiManager.swift in Sources */,
 				8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */,
+				8EE3D9FC20577D8C000CBF80 /* FileService.swift in Sources */,
 				8E8664CE205259FF0002F955 /* NSLayoutConstraintExtension.swift in Sources */,
+				8EE3D9D520575009000CBF80 /* UIStackViewExtension.swift in Sources */,
+				8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */,
+				8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */,
+				8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */,
+				8EE3D9EC205772B0000CBF80 /* ConfigurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +459,7 @@
 		};
 		8E8664C4205253DA0002F955 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -292,6 +471,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = JZFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjfjack.JZFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -304,6 +484,7 @@
 		};
 		8E8664C5205253DA0002F955 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -315,6 +496,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = JZFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjfjack.JZFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
