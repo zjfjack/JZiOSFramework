@@ -100,12 +100,12 @@ extension UIView{
         }
     }
     
-    public func setAnchorConstraintsFullSizeTo(view: UIView, margin: CGFloat = 0) {
+    public func setAnchorConstraintsFullSizeTo(view: UIView, padding: CGFloat = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: view.topAnchor, constant: margin).isActive = true
-        self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margin).isActive = true
-        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: margin).isActive = true
-        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -margin).isActive = true
+        self.topAnchor.constraint(equalTo: view.topAnchor, constant: padding).isActive = true
+        self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding).isActive = true
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding).isActive = true
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding).isActive = true
     }
     
     // MARK: - Shadow

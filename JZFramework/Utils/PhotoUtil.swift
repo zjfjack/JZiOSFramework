@@ -8,7 +8,7 @@
 
 import Photos
 
-public class PhotoUtil {
+open class PhotoUtil {
     
     //MARK: - Get photos from device
     public static func showGetPhotoOptionMenu(_ vc: UIViewController){
@@ -159,7 +159,7 @@ public class PhotoUtil {
         }
     }
     
-    public static func showAccessAlertController(_ isCamera: Bool) {
+    private static func showAccessAlertController(_ isCamera: Bool) {
         
         let alertMessage = isCamera ? "We need you turn on Camera service to access camera." : "We need you turn on Photos service to access photos."
         

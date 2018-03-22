@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E09B41C20631949004532A6 /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E09B41B20631948004532A6 /* ToastUtil.swift */; };
+		8E2F379F206080DA007B451A /* LocationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2F379E206080DA007B451A /* LocationUtil.swift */; };
 		8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E79DB3C205898060099C2CF /* CopyableLabel.swift */; };
 		8E8664C0205253DA0002F955 /* JZFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E8664BE205253DA0002F955 /* JZFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C7205258580002F955 /* UIColorExtension.swift */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.release.xcconfig"; sourceTree = "<group>"; };
 		7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		8E09B41B20631948004532A6 /* ToastUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
+		8E2F379E206080DA007B451A /* LocationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtil.swift; sourceTree = "<group>"; };
 		8E79DB3C205898060099C2CF /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		8E8664BB205253DA0002F955 /* JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8664BE205253DA0002F955 /* JZFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZFramework.h; sourceTree = "<group>"; };
@@ -172,8 +176,10 @@
 				8EE3D9D820575230000CBF80 /* DeviceUtil.swift */,
 				8EE3D9E320575FF5000CBF80 /* PublicUtil.swift */,
 				8EE3D9E520576155000CBF80 /* ViewControllerUtil.swift */,
+				8E2F379E206080DA007B451A /* LocationUtil.swift */,
 				8EE3D9E720576240000CBF80 /* AlertUtil.swift */,
 				8EE3D9E9205762DA000CBF80 /* PhotoUtil.swift */,
+				8E09B41B20631948004532A6 /* ToastUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */,
 				8EE3D9EA205762DA000CBF80 /* PhotoUtil.swift in Sources */,
 				8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */,
+				8E2F379F206080DA007B451A /* LocationUtil.swift in Sources */,
 				8EE3D9CE20574B2D000CBF80 /* UITableViewExtension.swift in Sources */,
 				8EE3D9E220575F19000CBF80 /* UINavigationControllerExtension.swift in Sources */,
 				8EE3D9D020574B80000CBF80 /* UIButtonExtension.swift in Sources */,
@@ -348,6 +355,7 @@
 				8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */,
 				8EE3D9FC20577D8C000CBF80 /* FileService.swift in Sources */,
 				8E8664CE205259FF0002F955 /* NSLayoutConstraintExtension.swift in Sources */,
+				8E09B41C20631949004532A6 /* ToastUtil.swift in Sources */,
 				8EE3D9D520575009000CBF80 /* UIStackViewExtension.swift in Sources */,
 				8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */,
 				8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */,
