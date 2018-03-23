@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E09B41C20631949004532A6 /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E09B41B20631948004532A6 /* ToastUtil.swift */; };
 		8E2F379F206080DA007B451A /* LocationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2F379E206080DA007B451A /* LocationUtil.swift */; };
+		8E6D4C0F206470BF00843861 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4C0E206470BF00843861 /* StringExtension.swift */; };
 		8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E79DB3C205898060099C2CF /* CopyableLabel.swift */; };
 		8E8664C0205253DA0002F955 /* JZFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E8664BE205253DA0002F955 /* JZFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C7205258580002F955 /* UIColorExtension.swift */; };
@@ -37,7 +38,6 @@
 		8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F620577966000CBF80 /* BaseTextView.swift */; };
 		8EE3D9FA20577B2C000CBF80 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F920577B2C000CBF80 /* ApiManager.swift */; };
 		8EE3D9FC20577D8C000CBF80 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9FB20577D8C000CBF80 /* FileService.swift */; };
-		8EE3D9FE2057A81F000CBF80 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9FD2057A81F000CBF80 /* UIImageViewExtension.swift */; };
 		D0C91193A8DF8915FFA0BA38 /* Pods_JZFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +46,7 @@
 		7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		8E09B41B20631948004532A6 /* ToastUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		8E2F379E206080DA007B451A /* LocationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtil.swift; sourceTree = "<group>"; };
+		8E6D4C0E206470BF00843861 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		8E79DB3C205898060099C2CF /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		8E8664BB205253DA0002F955 /* JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8664BE205253DA0002F955 /* JZFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZFramework.h; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		8EE3D9F620577966000CBF80 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		8EE3D9F920577B2C000CBF80 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		8EE3D9FB20577D8C000CBF80 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
-		8EE3D9FD2057A81F000CBF80 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,7 +164,7 @@
 				8EE3D9D620575047000CBF80 /* DateExtension.swift */,
 				8EE3D9DF20575E0A000CBF80 /* UserDefaultsExtension.swift */,
 				8EE3D9E120575F19000CBF80 /* UINavigationControllerExtension.swift */,
-				8EE3D9FD2057A81F000CBF80 /* UIImageViewExtension.swift */,
+				8E6D4C0E206470BF00843861 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -335,6 +335,7 @@
 			files = (
 				8EE3D9E620576155000CBF80 /* ViewControllerUtil.swift in Sources */,
 				8EE3D9CC205738B1000CBF80 /* UIViewExtension.swift in Sources */,
+				8E6D4C0F206470BF00843861 /* StringExtension.swift in Sources */,
 				8EE3D9DE2057585D000CBF80 /* BaseLabel.swift in Sources */,
 				8EE3D9D720575047000CBF80 /* DateExtension.swift in Sources */,
 				8EE3D9F5205776D9000CBF80 /* BaseTextField.swift in Sources */,
@@ -360,7 +361,6 @@
 				8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */,
 				8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */,
 				8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */,
-				8EE3D9FE2057A81F000CBF80 /* UIImageViewExtension.swift in Sources */,
 				8EE3D9EC205772B0000CBF80 /* ConfigurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
