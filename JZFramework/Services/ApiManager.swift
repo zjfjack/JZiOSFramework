@@ -6,9 +6,14 @@
 //  Copyright © 2018 Jeff Zhang. All rights reserved.
 //
 
-import Alamofire
 
-//Alamorefire embedded
+
+/*****
+ 
+import Alamofire
+import AlamofireObjectMapper
+import ObjectMapper
+
 open class ApiManager {
     
     static private var defaultSessionManager: Alamofire.SessionManager!
@@ -46,10 +51,23 @@ open class ApiManager {
         return sessionManager
     }
     
-    public static func makeAlamofirePostRequest(url: URLConvertible, parameters: Parameters, completion: @escaping (DataResponse<Any>) -> Void) {
+    public static func makeAlamofirePostRequestObject<T>(_ dataType: T.Type, url: URLConvertible, parameters: Parameters, completion: @escaping (DataResponse<BaseResponseObject<T>>) -> Void) {
         defaultSessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate().responseJSON {
-                response in
+            .validate().responseObject { (response: DataResponse<BaseResponseObject<T>>) in
+                completion(response)
+        }
+    }
+    
+    public static func makeAlamofirePostRequestArray<T>(_ dataType: T.Type, url: URLConvertible, parameters: Parameters, completion: @escaping (DataResponse<BaseResponseArray<T>>) -> Void) {
+        defaultSessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate().responseObject { (response: DataResponse<BaseResponseArray<T>>) in
+                completion(response)
+        }
+    }
+    
+    public static func makeAlamofirePostRequestPrimitive<T>(_ dataType: T.Type, url: URLConvertible, parameters: Parameters, completion: @escaping (DataResponse<BaseResponsePrimitive<T>>) -> Void) {
+        defaultSessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .validate().responseObject { (response: DataResponse<BaseResponsePrimitive<T>>) in
                 completion(response)
         }
     }
@@ -155,3 +173,6 @@ open class ApiManager {
     }
     
 }
+ 
+ 
+ *****/

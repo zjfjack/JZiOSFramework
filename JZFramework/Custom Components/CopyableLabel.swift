@@ -9,7 +9,7 @@
 import UIKit
 
 //Simulator will cause first time long press flickering bug
-public class CopyableLabel: UILabel {
+open class CopyableLabel: UILabel {
     
     public init(text: String?=nil, font: UIFont?=nil, textColor: UIColor?=nil) {
         super.init(frame: .zero)
@@ -22,13 +22,17 @@ public class CopyableLabel: UILabel {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        fatalError()
+        setupBasic()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setupBasic() {
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(showMenu)))
-        NotificationCenter.default.addObserver(self, selector: #selector(self.clearColor),name: NSNotification.Name.UIMenuControllerWillHideMenu, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearColor),name: NSNotification.Name.UIMenuControllerWillHideMenu, object: nil)
     }
     
     @objc private func clearColor() {
@@ -69,17 +73,17 @@ public class CopyableLabel: UILabel {
         copyMenu.setMenuVisible(true, animated: true)
     }
     
-    public override func copy(_ sender: Any?) {
+    open override func copy(_ sender: Any?) {
         let board = UIPasteboard.general
         board.string = text
         UIMenuController.shared.setMenuVisible(false, animated: false)
     }
     
-    public override var canBecomeFirstResponder : Bool {
+    open override var canBecomeFirstResponder : Bool {
         return true
     }
     
-    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.copy) {
             return true
         }

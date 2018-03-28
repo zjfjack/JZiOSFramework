@@ -63,14 +63,14 @@ open class LocationUtil {
                         mapItem.openInMaps(launchOptions: options)
                         
                     }else{
-                        AlertUtil.showNoFunctionAlertController(message: "Cannot find location")
+                        AlertUtil.presentNoFunctionAlertController(message: "Cannot find location")
                     }
                 }else{
-                    AlertUtil.showNoFunctionAlertController(message: "Cannot find any placemark")
+                    AlertUtil.presentNoFunctionAlertController(message: "Cannot find any placemark")
                 }
             }else{
                 print(error!.localizedDescription)
-                AlertUtil.showNoFunctionAlertController(message: (error?.localizedDescription)!)
+                AlertUtil.presentNoFunctionAlertController(message: (error?.localizedDescription)!)
             }
         })
     }

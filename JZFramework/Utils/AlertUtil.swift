@@ -17,7 +17,7 @@ open class AlertUtil {
         return UIAlertAction(title: title, style: .cancel)
     }
     
-    public static func showNoFunctionAlertController(title:String?=nil, message:String) {
+    public static func presentNoFunctionAlertController(title:String?=nil, message:String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let OKAction = UIAlertAction(title: "OK", style: .default)

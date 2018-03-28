@@ -73,7 +73,7 @@ open class PhotoUtil {
                 imagePicker.sourceType = .camera
                 imagePicker.cameraCaptureMode = .photo
             } else {
-                AlertUtil.showNoFunctionAlertController(title: "No Camera", message: "Sorry, this device has no camera")
+                AlertUtil.presentNoFunctionAlertController(title: "No Camera", message: "Sorry, this device has no camera")
             }
         } else {
             imagePicker.sourceType = .photoLibrary
@@ -134,7 +134,7 @@ public protocol ImagePickerDelegate: UIImagePickerControllerDelegate, UINavigati
 
 fileprivate class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    public var delegate: ImagePickerDelegate?
+    public weak var delegate: ImagePickerDelegate?
     public let picker = UIImagePickerController()
     
     public override init() {

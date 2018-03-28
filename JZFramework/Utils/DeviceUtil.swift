@@ -95,7 +95,7 @@ open class DeviceUtil {
                     case .touchIDNotAvailable:
                         //Face Id Click not allow TODO: Jump to app setting
                         DispatchQueue.main.async {
-                            AlertUtil.showNoFunctionAlertController(message: "Enable Face ID to login")
+                            AlertUtil.presentNoFunctionAlertController(message: "Enable Face ID to login")
                         }
                     default:
                         print(laError.code.rawValue)
@@ -104,7 +104,7 @@ open class DeviceUtil {
             }
         } else {
             //Device not capable scenario //Biometry locked out or not available
-            AlertUtil.showNoFunctionAlertController(message: authError!.localizedDescription)
+            AlertUtil.presentNoFunctionAlertController(message: authError!.localizedDescription)
         }
     }
     

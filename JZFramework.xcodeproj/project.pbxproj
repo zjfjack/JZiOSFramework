@@ -38,12 +38,9 @@
 		8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F620577966000CBF80 /* BaseTextView.swift */; };
 		8EE3D9FA20577B2C000CBF80 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9F920577B2C000CBF80 /* ApiManager.swift */; };
 		8EE3D9FC20577D8C000CBF80 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9FB20577D8C000CBF80 /* FileService.swift */; };
-		D0C91193A8DF8915FFA0BA38 /* Pods_JZFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.release.xcconfig"; sourceTree = "<group>"; };
-		7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JZFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		8E09B41B20631948004532A6 /* ToastUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		8E2F379E206080DA007B451A /* LocationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtil.swift; sourceTree = "<group>"; };
 		8E6D4C0E206470BF00843861 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -77,7 +74,6 @@
 		8EE3D9F620577966000CBF80 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		8EE3D9F920577B2C000CBF80 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		8EE3D9FB20577D8C000CBF80 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
-		C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JZFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,36 +81,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0C91193A8DF8915FFA0BA38 /* Pods_JZFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0DDAC9F25BD052B85370EECE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C363ADBAA6E8BC5581F286AA /* Pods_JZFramework.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		66A41B959F7F3E5BAC9AF327 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */,
-				3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		8E79DB3B205897D70099C2CF /* CopyableLabel */ = {
+		8E79DB3B205897D70099C2CF /* Custom Components */ = {
 			isa = PBXGroup;
 			children = (
 				8E79DB3C205898060099C2CF /* CopyableLabel.swift */,
 			);
-			path = CopyableLabel;
+			path = "Custom Components";
 			sourceTree = "<group>";
 		};
 		8E8664B1205253DA0002F955 = {
@@ -122,8 +100,6 @@
 			children = (
 				8E8664BD205253DA0002F955 /* JZFramework */,
 				8E8664BC205253DA0002F955 /* Products */,
-				66A41B959F7F3E5BAC9AF327 /* Pods */,
-				0DDAC9F25BD052B85370EECE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,7 +118,7 @@
 				8EE3D9DC2057584A000CBF80 /* BaseClasses */,
 				8EE3D9D120574BF0000CBF80 /* Utils */,
 				8E8664C6205258390002F955 /* Extensions */,
-				8E79DB3B205897D70099C2CF /* CopyableLabel */,
+				8E79DB3B205897D70099C2CF /* Custom Components */,
 				8EE3D9ED2057747E000CBF80 /* Resources */,
 				8E8664BE205253DA0002F955 /* JZFramework.h */,
 				8E8664BF205253DA0002F955 /* Info.plist */,
@@ -232,12 +208,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E8664C3205253DA0002F955 /* Build configuration list for PBXNativeTarget "JZFramework" */;
 			buildPhases = (
-				B19D32F86EB4F35B422C65C4 /* [CP] Check Pods Manifest.lock */,
 				8E8664B6205253DA0002F955 /* Sources */,
 				8E8664B7205253DA0002F955 /* Frameworks */,
 				8E8664B8205253DA0002F955 /* Headers */,
 				8E8664B9205253DA0002F955 /* Resources */,
-				796B95BEB81F81DF6305E23D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,42 +265,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		796B95BEB81F81DF6305E23D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JZFramework/Pods-JZFramework-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B19D32F86EB4F35B422C65C4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JZFramework-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E8664B6205253DA0002F955 /* Sources */ = {
@@ -483,7 +421,6 @@
 		};
 		8E8664C4205253DA0002F955 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BFCA7DB982D498A38BB5AFA /* Pods-JZFramework.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -508,7 +445,6 @@
 		};
 		8E8664C5205253DA0002F955 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3857A87CE7A367EB434366D4 /* Pods-JZFramework.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
