@@ -18,18 +18,21 @@ open class DeviceUtil {
     //Not include the iPhone X bottom gesture bar
     public static let tabBarHeight: CGFloat = UITabBarController().tabBar.frame.height
     
-    public static var screenWidth: CGFloat {
+    //Will changed when device rotate or iPad Split View
+    public static var currentScreenWidth: CGFloat {
         return UIScreen.main.bounds.width
     }
     
-    public static var screenHeight: CGFloat {
+    public static var currentScreenHeight: CGFloat {
         return UIScreen.main.bounds.height
     }
     
-    public static let isIPhoneX: Bool = UIDevice.current.userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436
+    //Fixed value
+    public static var screenWidth: CGFloat = UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale
+    public static var screenHeight: CGFloat = UIScreen.main.nativeBounds.height / UIScreen.main.nativeScale
     
-    public static let isIPhoneSEOrSmaller: Bool = UIScreen.main.nativeBounds.height <= 568
-    
+    public static let isIPhoneX: Bool = UIDevice.current.userInterfaceIdiom == .phone && screenHeight == 812
+    public static let isIPhoneSEOrSmaller: Bool = screenWidth <= 320
     public static let isIPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
     
     //Example: lblTitle.centerYAnchor.constraint(equalTo: naviView.centerYAnchor, constant: centerYOffset).isActive = true

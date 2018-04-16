@@ -17,12 +17,14 @@ extension UIStackView{
     }
     
     public func resetArrangedSubviews(_ subviews: [UIView]) {
-        
         self.subviews.forEach {
             $0.removeFromSuperview()
         }
-        
-        subviews.forEach {
+        addArrangedSubviews(subviews)
+    }
+    
+    public func addArrangedSubviews(_ views: [UIView]) {
+        views.forEach {
             self.addArrangedSubview($0)
         }
     }

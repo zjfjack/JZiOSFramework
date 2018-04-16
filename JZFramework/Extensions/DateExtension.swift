@@ -13,7 +13,7 @@ extension Date {
     public static let defaultDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "Australia/Sydney")
+        dateFormatter.timeZone = Calendar.current.timeZone
         return dateFormatter
     }()
     
@@ -22,7 +22,7 @@ extension Date {
         let formatStr = Date.isDevice24h() ? "dd/MM/yyyy HH:mm" : "dd/MM/yyyy hh:mm a"
         dateFormatter.dateFormat = formatStr
         dateFormatter.locale = Locale.current
-        dateFormatter.timeZone = TimeZone(identifier: "Australia/Sydney")
+        dateFormatter.timeZone = Calendar.current.timeZone
         return dateFormatter
     }()
     
@@ -31,6 +31,9 @@ extension Date {
         return !formatString!.contains("a")
     }
     
-    
+    //Date Calculate
+    public func add(component: Calendar.Component, value: Int) -> Date {
+        return Calendar.current.date(byAdding: component, value: value, to: self)!
+    }
     
 }
