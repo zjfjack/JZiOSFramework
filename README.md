@@ -21,6 +21,6 @@ Basic framework for iOS Swift, such as extensions, base classes and utils
 - DeviceUtil: Basic device information & Biometric Authentication setup
 - ViewControllerUtil: HUD progess view implemented
 
-### Utils
+### Extensions
 
 - UIViewExtensions: Programmtically add constraints (anchor) for views
