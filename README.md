@@ -13,14 +13,22 @@ Basic framework for iOS Swift, such as extensions, base classes and utils
 - CopyableLabel: A Label subclassed from UILabel allowing long press to copy
 - JZAlertController: Custom Alert Controller by providing custom view and actions
 
+### Service
+
+- ConfigurationManager: Configuration environment setup
+- ApiManager: Wrapper for Alamofire and ObectMapper (Post, Download and Upload)
+- FileService: Create path, get mime type and remove files
+
 ### Utils
 
 - ToastUtil: Android-like middle Toast and Top&Bottom toast
-- PhotoUtil: Fully error handling and displaying for getting photos from camera and photoLibrary
+- PhotoUtil: Fully error handling for getting photos from camera and photoLibrary
 - LocationUtil: Open Apple maps and GoogeMaps with location string
 - DeviceUtil: Basic device information & Biometric Authentication setup
 - ViewControllerUtil: HUD progess view implemented
 
 ### Extensions
 
-- UIViewExtensions: Programmtically add constraints (anchor) for views
+- NSLayoutConstraintExtensions: Programmtically add constraints for views (Visual Format Language)
+- UIViewExtensions: Programmtically add constraints for views (Anchor)
+- StringExtensions: Localization helper
