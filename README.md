@@ -1,5 +1,9 @@
 # JZiOSFramework
 
+[![Build Status](https://travis-ci.org/zjfjack/JZiOSFramework.svg?branch=master)](https://travis-ci.org/zjfjack/JZiOSFramework)
+[![CocoaPods](https://img.shields.io/cocoapods/v/JZiOSFramework.svg)](https://cocoapods.org/pods/JZiOSFramework)
+[![Platform](https://img.shields.io/cocoapods/p/JZiOSFramework.svg?style=flat)](https://github.com/zjfjack/JZiOSFramework)
+
 Basic framework for iOS Swift, such as extensions, base classes and utils
 
 ## Features
