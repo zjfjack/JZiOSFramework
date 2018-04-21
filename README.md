@@ -2,11 +2,7 @@
 
 Basic framework for iOS Swift, such as extensions, base classes and utils
 
-### Requirements
-
-- iOS 9.0+
-- Xcode 9.3+
-- Swift 4.1+
+## Features
 
 ### Useful classes
 
@@ -32,3 +28,18 @@ Basic framework for iOS Swift, such as extensions, base classes and utils
 - NSLayoutConstraintExtensions: Programmtically add constraints for views (Visual Format Language)
 - UIViewExtensions: Programmtically add constraints for views (Anchor)
 - StringExtensions: Localization helper
+
+## Requirements
+
+- iOS 9.0+
+- Xcode 9.3+
+- Swift 4.1+
+
+## Installation
+
+### Cocoapods
+JZiOSFramework can be added to your project by adding the following line to your `Podfile`:
+
+```ruby
+pod 'JZiOSFramework', '~> 1.0'
+```

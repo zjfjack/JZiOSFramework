@@ -11,7 +11,7 @@
 public static func showHyperLinkAlertController(message: String, linkAddress: String, linkText: String) {
     let customView = HyperlinkAlertView(text: message, linkAddress: linkAddress, linkText: linkText)
     let alertController = JZAlertController(customView: customView)
-    let OKAction = CustomAlertAction(title: "OK")
+    let OKAction = JZAlertAction(title: "OK")
     alertController.addAction(OKAction)
     BaseViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true)
 }
@@ -22,7 +22,7 @@ import UIKit
 fileprivate let fontSize: CGFloat = 16
 
 ///Custom Alert Controller by providing custom view and actions
-public class JZAlertController: UIViewController {
+open class JZAlertController: UIViewController {
     
     let alertView = UIView()
     lazy var stvAlert = UIStackView()
@@ -50,7 +50,7 @@ public class JZAlertController: UIViewController {
         self.modalTransitionStyle = .crossDissolve
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
@@ -73,7 +73,7 @@ public class JZAlertController: UIViewController {
         alertView.setAnchorConstraintsEqualTo(widthAnchor: alertViewWidth, centerXAnchor: view.centerXAnchor, centerYAnchor: view.centerYAnchor)
     }
     
-    public func addAction(_ action: CustomAlertAction) {
+    public func addAction(_ action: JZAlertAction) {
         
         let subviewsCount = stvActions.arrangedSubviews.count
         
@@ -112,7 +112,7 @@ public class JZAlertController: UIViewController {
         return divider
     }
     
-    override public func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -120,7 +120,7 @@ public class JZAlertController: UIViewController {
     
 }
 
-public class CustomAlertAction {
+public class JZAlertAction {
     
     public var title: String
     public var titleColor: UIColor?
