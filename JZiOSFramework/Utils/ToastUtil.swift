@@ -6,43 +6,56 @@
 //  Copyright © 2018 Jeff Zhang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 open class ToastUtil {
     
+    public enum ToastPosition {
+        case top, bottom, middle
+    }
+    
     static private let defaultLabelSidesPadding: CGFloat = 20
     
-    static private let defaultMidFont = UIFont.getRegularText(13)
+    static private let defaultMidFont = UIFont.systemFont(ofSize: 13)
     static private let defaultMidBgColor = UIColor(hex: 0xE8E8E8)
     static private let defaultMidTextColor = UIColor.darkGray
     static private let defaultMidHeight: CGFloat = 40
     static private let defaultMidMinWidth: CGFloat = 80
-    static private let defaultMidToBottom: CGFloat = 20 + DeviceUtil.tabBarHeight
+    static private let defaultMidToBottom: CGFloat = 20 + UITabBarController().tabBar.frame.height
     
-    static private let defaultTopBotFont = UIFont.getSemiboldText(16)
+    static private let defaultTopBotFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     static private let defaultTopBotTextColor = UIColor.white
-    static private let defaultTopBotBgColor = UIColor.blue
+    static private let defaultTopBotBgColor = UIColor.darkGray
+    static private let defaultTopBotHeight = UIApplication.shared.statusBarFrame.height + UINavigationController().navigationBar.frame.height
     
-    static private let defaultExistTime: TimeInterval = 1.0
+    static private let defaultExistTime: TimeInterval = 1.5
     static private let defaultShowTime: TimeInterval = 0.5
     
-    public static func toastMessageInTheMiddle(_ message: String, bgColor: UIColor? = nil, existTime: TimeInterval? = nil) {
+    static private var toastView: UIView!
+    static private var gestureView: UIView!
+    static private var toastLabel: UILabel!
+    static private var toastToTopConstraint: NSLayoutConstraint!
+    static private var toastPosition: ToastPosition!
+    
+    public static func toastMessageInTheMiddle(message: String, bgColor: UIColor? = nil, existTime: TimeInterval? = nil) {
+        guard let currentWindow = UIApplication.shared.delegate?.window!, toastView == nil else { return }
         
-        guard let currentWindow = ViewControllerUtil.getCurrentViewController()?.view.window else { return }
-        let toastView = UIView(backgroundColor: defaultMidBgColor)
+        toastPosition = .middle
+        toastView = UIView()
+        toastView.backgroundColor = defaultMidBgColor
         toastView.alpha = 0
-        toastView.setCornerRadius(defaultMidHeight/2)
-        let toastLabel =  addToastLabel(to: toastView, message: message, isMiddle: true)
+        toastView.layer.cornerRadius = defaultMidHeight/2
+        toastView.clipsToBounds = true
+        addToastLabel(message: message)
         
         currentWindow.addSubview(toastView)
         var bottomYAnchor: NSLayoutYAxisAnchor
-        //Support iPhone X
+        // Support iPhone X
         if #available(iOS 11.0, *) {
             bottomYAnchor = currentWindow.safeAreaLayoutGuide.bottomAnchor
         } else {
             bottomYAnchor = currentWindow.bottomAnchor
         }
-        
         toastView.setAnchorCenterHorizontallyTo(view: currentWindow, heightAnchor: defaultMidHeight, bottomAnchor: (bottomYAnchor, -defaultMidToBottom))
         toastView.widthAnchor.constraint(greaterThanOrEqualToConstant: defaultMidMinWidth).isActive = true
         
@@ -57,50 +70,124 @@ open class ToastUtil {
                 toastLabel.alpha = 0
             }, completion: { _ in
                 toastView.removeFromSuperview()
+                toastView = nil
             })
         })
     }
     
-    public static func toastMessageFromTopOrBottom(_ message: String, isFromTop: Bool = true, bgColor: UIColor? = nil, existTime: TimeInterval? = nil) {
+    public static func toastMessageFromTopOrBottom(message: String, toastPosition: ToastPosition = .top, bgColor: UIColor? = nil,
+                                                   existTime: TimeInterval? = nil, hideStatusBar: Bool = true) {
+        guard let currentWindow = UIApplication.shared.delegate?.window!, toastView == nil else { return }
         
-        guard let currentWindow = ViewControllerUtil.getCurrentViewController()?.view.window else { return }
-        
-        let toastWidth = DeviceUtil.screenWidth
-        let toastHeight = DeviceUtil.naviAndStatusBarHeight
-        
-        var toastView: UIView
-        toastView = isFromTop ? UIView(frame: CGRect(x: 0, y: -toastHeight, width: toastWidth, height: toastHeight)) :
-                                UIView(frame: CGRect(x: 0, y: DeviceUtil.screenHeight + toastHeight, width: toastWidth, height: toastHeight))
-        
-        toastView.backgroundColor = (bgColor ?? defaultTopBotBgColor).withAlphaComponent(0.95)
-        let toastLabel = addToastLabel(to: toastView, message: message, isMiddle: false)
-        
+        self.toastPosition = toastPosition
+        let isFromTop = toastPosition == .top
+        toastView = UIView()
+        toastView.backgroundColor = bgColor ?? defaultTopBotBgColor
+        addToastLabel(message: message)
         currentWindow.addSubview(toastView)
         
+        let topAnchorTuple = isFromTop ? (currentWindow.topAnchor, -defaultTopBotHeight) : (currentWindow.bottomAnchor, 0)
+        toastToTopConstraint = toastView.topAnchor.constraint(equalTo: topAnchorTuple.0, constant: topAnchorTuple.1)
+        toastToTopConstraint.isActive = true
+        
+        toastView.setAnchorConstraintsEqualTo(heightAnchor: defaultTopBotHeight, leadingAnchor: (currentWindow.leadingAnchor, 0), trailingAnchor: (currentWindow.trailingAnchor, 0))
+        
+        toastViewAddSwipeBackGesture(isFromTop: toastPosition == .top, currentWindow: currentWindow)
+        
         let delay = existTime ?? defaultExistTime
+        let shouldHideStatusBar = hideStatusBar && isFromTop
+        if shouldHideStatusBar { currentWindow.windowLevel = UIWindowLevelStatusBar }
+        
         UIView.animate(withDuration: defaultShowTime, delay: 0, options: .curveEaseInOut, animations: {
-            toastView.transform = CGAffineTransform(translationX: 0, y: isFromTop ? toastHeight : -toastHeight)
+            toastView.transform = CGAffineTransform(translationX: 0, y: isFromTop ? defaultTopBotHeight : -defaultTopBotHeight)
             toastLabel.alpha = 1
-        }, completion: { _ in
-            
-            UIView.animate(withDuration: defaultShowTime, delay: delay, options: .curveEaseInOut, animations: {
-                toastView.transform = CGAffineTransform.identity
-                toastLabel.alpha = 0
-            }, completion: { _ in
-                toastView.removeFromSuperview()
-            })
+        })
+        
+        UIView.animate(withDuration: defaultShowTime, delay: delay + defaultShowTime, options: .curveEaseInOut, animations: {
+            toastView.transform = CGAffineTransform.identity
+            toastLabel.alpha = 0
+        }, completion: { isFinished in
+            guard isFinished else { return }
+            if shouldHideStatusBar { currentWindow.windowLevel = UIWindowLevelNormal }
+            toastView?.removeFromSuperview()
+            toastView = nil
         })
     }
     
-    private static func addToastLabel(to toastView: UIView, message: String, isMiddle: Bool) -> UILabel {
+    private static func toastViewAddSwipeBackGesture(isFromTop: Bool, currentWindow: UIWindow) {
+        let gestureIndicator = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+        let indicatorSize = CGSize(width: 40, height: 4)
+        let indicatorToEdge: CGFloat = 5
+        gestureIndicator.alpha = 0.8
+        gestureIndicator.layer.cornerRadius = indicatorSize.height/2
+        gestureIndicator.clipsToBounds = true
+        toastView.addSubview(gestureIndicator)
+        if isFromTop {
+            gestureIndicator.setAnchorCenterHorizontallyTo(view: toastView, widthAnchor: indicatorSize.width, heightAnchor: indicatorSize.height, bottomAnchor: (toastView.bottomAnchor, -indicatorToEdge))
+        } else {
+            gestureIndicator.setAnchorCenterHorizontallyTo(view: toastView, widthAnchor: indicatorSize.width, heightAnchor: indicatorSize.height, topAnchor: (toastView.topAnchor, indicatorToEdge))
+        }
+        
+        gestureView = UIView()
+        currentWindow.addSubview(gestureView)
+        let topAnchorTuple = isFromTop ? (currentWindow.topAnchor, 0) : (currentWindow.bottomAnchor, -defaultTopBotHeight)
+        gestureView.setAnchorConstraintsEqualTo(heightAnchor: defaultTopBotHeight, topAnchor: topAnchorTuple, leadingAnchor: (currentWindow.leadingAnchor, 0), trailingAnchor: (currentWindow.trailingAnchor, 0))
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gestureViewTapped(_:)))
+        gestureView.addGestureRecognizer(tapGesture)
+        gestureView.isUserInteractionEnabled = true
+    }
+    
+    @objc private static func gestureViewTapped(_ recognizer: UIGestureRecognizer) {
+        guard let currentWindow = UIApplication.shared.delegate?.window!, toastView != nil else { return }
+        
+        gestureView.removeFromSuperview()
+        toastView.layer.sublayers?.forEach { $0.removeAllAnimations() }
+        toastView.layer.removeAllAnimations()
+        
+        toastLabel.alpha = 1
+        let isFromTop = toastPosition == .top
+        let presentLayer = toastView.layer.presentation()!
+        let originYTop = presentLayer.frame.origin.y
+        let originYBottom = currentWindow.frame.height - originYTop
+        toastToTopConstraint.constant = isFromTop ? originYTop : -originYBottom
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            toastLabel.alpha = 0
+            toastView.transform = CGAffineTransform(translationX: 0, y: isFromTop ? -(defaultTopBotHeight+originYTop) : originYBottom)
+        }, completion: { _ in
+            currentWindow.windowLevel = UIWindowLevelNormal
+            toastView?.removeFromSuperview()
+            toastView = nil
+        })
+    }
+    
+    private static func addToastLabel(message: String) {
+        let isMiddle = toastPosition == .middle
         let font = isMiddle ? defaultMidFont : defaultTopBotFont
         let textColor = isMiddle ? defaultMidTextColor : defaultTopBotTextColor
-        let toastLabel = BaseLabel(text: message, font: font, textColor: textColor)
+        toastLabel = UILabel()
+        toastLabel.text = message
+        toastLabel.font = font
+        toastLabel.textColor = textColor
         toastLabel.textAlignment = .center
         toastLabel.alpha = 0
         toastView.addSubview(toastLabel)
-        toastLabel.setAnchorCenterVerticallyTo(view: toastView, heightAnchor: defaultMidHeight, leadingAnchor: (toastView.leadingAnchor, defaultLabelSidesPadding), trailingAnchor: (toastView.trailingAnchor, -defaultLabelSidesPadding))
-        return toastLabel
+        let centerYConstant: CGFloat = {
+            if isMiddle {
+                return 0
+            } else {
+                // Support iPhone X
+                let statusBarHeight = UIApplication.shared.statusBarFrame.height
+                let hasNotch: Bool = statusBarHeight > 20
+                let shouldAdjustYOffset = hasNotch && UIApplication.shared.statusBarOrientation.isPortrait && toastPosition == .top
+                if shouldAdjustYOffset {
+                    return statusBarHeight/2 - 15
+                }
+                return 0
+            }
+        }()
+        toastLabel.centerYAnchor.constraint(equalTo: toastView.centerYAnchor, constant: centerYConstant).isActive = true
+        toastLabel.setAnchorConstraintsEqualTo(heightAnchor: defaultMidHeight, leadingAnchor: (toastView.leadingAnchor, defaultLabelSidesPadding), trailingAnchor: (toastView.trailingAnchor, -defaultLabelSidesPadding))
     }
-    
 }
