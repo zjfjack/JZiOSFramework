@@ -3,12 +3,14 @@
 [![Build Status](https://travis-ci.org/zjfjack/JZiOSFramework.svg?branch=master)](https://travis-ci.org/zjfjack/JZiOSFramework)
 [![CocoaPods](https://img.shields.io/cocoapods/v/JZiOSFramework.svg)](https://cocoapods.org/pods/JZiOSFramework)
 [![Platform](https://img.shields.io/cocoapods/p/JZiOSFramework.svg?style=flat)](https://github.com/zjfjack/JZiOSFramework)
+[![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![license MIT](https://img.shields.io/cocoapods/l/JZiOSFramework.svg)](http://opensource.org/licenses/MIT)
 
 Basic framework for iOS Swift, such as extensions, base classes and utils
 
 ## Features
 
-### Useful classes
+### Useful components
 
 - CopyableLabel: A Label subclassed from UILabel allowing long press to copy
 - JZAlertController: Custom Alert Controller by providing custom view and actions
@@ -21,7 +23,7 @@ Basic framework for iOS Swift, such as extensions, base classes and utils
 
 ### Utils
 
-- ToastUtil: Android-like middle Toast and Top&Bottom toast
+- ToastUtil: Android-like middle Toast and Top&Bottom toast(Support tap to dismiss & iPhone X)
 - PhotoUtil: Fully error handling for getting photos from camera and photoLibrary
 - LocationUtil: Open Apple maps and GoogeMaps with location string
 - DeviceUtil: Basic device information & Biometric Authentication setup
