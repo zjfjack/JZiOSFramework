@@ -8,13 +8,13 @@
 
 
 /** Examples of usage
-public static func showHyperLinkAlertController(message: String, linkAddress: String, linkText: String) {
-    let customView = HyperlinkAlertView(text: message, linkAddress: linkAddress, linkText: linkText)
-    let alertController = JZAlertController(customView: customView)
-    let OKAction = JZAlertAction(title: "OK")
-    alertController.addAction(OKAction)
-    BaseViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true)
-}
+ public static func showHyperLinkAlertController(message: String, linkAddress: String, linkText: String) {
+ let customView = HyperlinkAlertView(text: message, linkAddress: linkAddress, linkText: linkText)
+ let alertController = JZAlertController(customView: customView)
+ let OKAction = JZAlertAction(title: "OK")
+ alertController.addAction(OKAction)
+ BaseViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true)
+ }
  */
 
 import UIKit
