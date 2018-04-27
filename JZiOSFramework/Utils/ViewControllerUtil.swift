@@ -11,7 +11,7 @@ import Foundation
 
 open class ViewControllerUtil {
     
-    //MARK: - HUD
+    // MARK: - HUD
     private static var HUDView: UIView!
     private static var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -60,9 +60,9 @@ open class ViewControllerUtil {
     }
     
     
-    //MARK: - General
+    // MARK: - General
     
-    //Be care UISplitViewController in iPad
+    // Be care UISplitViewController in iPad
     public static func getCurrentViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         
         if let navigationController = controller as? UINavigationController {
@@ -80,7 +80,7 @@ open class ViewControllerUtil {
         return controller
     }
     
-    //Hide status bar to allow SideMenu display better
+    // Hide status bar
     public static func showStatusBar() {
         guard let currentVC = getCurrentViewController() else {return}
         currentVC.view.window?.windowLevel = UIWindowLevelNormal

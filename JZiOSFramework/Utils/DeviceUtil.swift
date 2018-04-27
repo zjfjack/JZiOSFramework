@@ -77,6 +77,15 @@ open class DeviceUtil {
     
     public static func setupBiometricAuthentication(successAction: @escaping () -> Void, fallbackAction: @escaping () -> Void) {
         
+        func presentAllowUsageController() {
+            let alertController = UIAlertController(title: "Enable Face ID to login", message: "We need you turn on Face ID usage in Settings.", preferredStyle: .alert)
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (action) in
+                UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
+            }
+            alertController.addActions([settingsAction, AlertUtil.getCancelAction()])
+            ViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true, completion: nil)
+        }
+        
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "Use Password"
         var authError: NSError?
@@ -103,18 +112,30 @@ open class DeviceUtil {
                         }
                         break
                     case .touchIDNotAvailable:
-                        // Face Id Click not allow TODO: Jump to app setting
+                        // Face Id Click not allow
                         DispatchQueue.main.async {
-                            AlertUtil.presentNoFunctionAlertController(message: "Enable Face ID to login")
+                            presentAllowUsageController()
                         }
                     default:
-                        print(laError.code.rawValue)
+                        DispatchQueue.main.async {
+                            ToastUtil.toastMessageInTheMiddle(message: laError.localizedDescription)
+                        }
                     }
                 }
             }
         } else {
-            // Device not capable scenario //Biometry locked out or not available
-            AlertUtil.presentNoFunctionAlertController(message: authError!.localizedDescription)
+            //Device not capable scenario //Biometry locked out or not available
+            let laError = authError as! LAError
+            switch laError.code {
+            case .touchIDNotAvailable:
+                //Face Id Click not allow
+                presentAllowUsageController()
+                
+            case .touchIDLockout:
+                AlertUtil.presentNoFunctionAlertController(title: "Biometric login is locked now", message: "Please use password to login")
+            default:
+                ToastUtil.toastMessageInTheMiddle(message: laError.localizedDescription)
+            }
         }
     }
     
