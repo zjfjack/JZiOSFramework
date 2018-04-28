@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "JZiOSFramework"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Basic framework for iOS Swift"
   s.homepage = "https://github.com/zjfjack/JZiOSFramework"
   s.license      = { :type => "MIT", :file => "LICENSE" }

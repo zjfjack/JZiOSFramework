@@ -110,6 +110,7 @@ open class ToastUtil {
             guard isFinished else { return }
             if shouldHideStatusBar { currentWindow.windowLevel = UIWindowLevelNormal }
             toastView?.removeFromSuperview()
+            gestureView?.removeFromSuperview()
             toastView = nil
         })
     }
