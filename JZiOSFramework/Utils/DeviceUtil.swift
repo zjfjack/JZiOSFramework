@@ -53,33 +53,52 @@ open class DeviceUtil {
         case faceID = "Face ID"
     }
     
+    public enum BiometricState {
+        case available, notAvailable, lockout, notEnrolled, unknown
+    }
+    
+    public static func getBiometricStatus() -> BiometricState {
+        var authError: NSError?
+        if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+            return .available
+        } else {
+            switch (authError as! LAError).code {
+            case .biometryLockout: return .lockout
+            case .biometryNotAvailable: return .notAvailable
+            case .biometryNotEnrolled: return .notEnrolled
+            default: return .unknown
+            }
+        }
+    }
+    
     public static func getSupportBiometryType() -> BiometryType {
         
         let localAuthenticationContext = LAContext()
-        localAuthenticationContext.localizedFallbackTitle = "Login"
-        var authError: NSError?
-        if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+        let biometricStatus = getBiometricStatus()
+        if biometricStatus == .unknown || biometricStatus == .notEnrolled {
+            return .none
+        } else {
             if #available(iOS 11.0, *) {
                 if localAuthenticationContext.biometryType == .touchID {
                     return .touchID
                 } else if localAuthenticationContext.biometryType == .faceID {
                     return .faceID
                 } else {
-                    return .none
+                    // biometryType == none && BiometricStatus != unknown and notEnrolled
+                    // it means disable biometric usage
+                    return .faceID
                 }
             } else {
                 return .touchID
             }
-        } else {
-            return .none
         }
     }
     
     public static func setupBiometricAuthentication(successAction: @escaping () -> Void, fallbackAction: @escaping () -> Void) {
         
         func presentAllowUsageController() {
-            let alertController = UIAlertController(title: "Enable Face ID to login", message: "We need you turn on Face ID usage in Settings.", preferredStyle: .alert)
-            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (action) in
+            let alertController = UIAlertController(title: "Face ID Not Enabled", message: "We need you turn on Face ID usage in Settings", preferredStyle: .alert)
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
                 UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
             }
             alertController.addActions([settingsAction, AlertUtil.getCancelAction()])
@@ -111,7 +130,7 @@ open class DeviceUtil {
                             fallbackAction()
                         }
                         break
-                    case .touchIDNotAvailable:
+                    case .biometryNotAvailable:
                         // Face Id Click not allow
                         DispatchQueue.main.async {
                             presentAllowUsageController()
@@ -127,12 +146,13 @@ open class DeviceUtil {
             //Device not capable scenario //Biometry locked out or not available
             let laError = authError as! LAError
             switch laError.code {
-            case .touchIDNotAvailable:
+            case .biometryNotAvailable:
                 //Face Id Click not allow
                 presentAllowUsageController()
                 
-            case .touchIDLockout:
-                AlertUtil.presentNoFunctionAlertController(title: "Biometric login is locked now", message: "Please use password to login")
+            case .biometryLockout:
+                // Face ID will not be locked for now
+                AlertUtil.presentNoFunctionAlertController(title: "Touch ID is locked now", message: "Please use password to login")
             default:
                 ToastUtil.toastMessageInTheMiddle(message: laError.localizedDescription)
             }

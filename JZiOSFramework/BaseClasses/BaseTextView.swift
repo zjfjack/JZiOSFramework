@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseTextView: UITextView {
+open class BaseTextView: UITextView {
     
     public init(text: String? = nil, font: UIFont? = nil,
                 textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {

@@ -12,6 +12,7 @@
 		8E478FA020845F2E00668F05 /* JZAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E478F9F20845F2E00668F05 /* JZAlertController.swift */; };
 		8E6D4C0F206470BF00843861 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4C0E206470BF00843861 /* StringExtension.swift */; };
 		8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E79DB3C205898060099C2CF /* CopyableLabel.swift */; };
+		8E7C0B9720AA9A580064F2AC /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C0B9620AA9A580064F2AC /* HyperlinkTextView.swift */; };
 		8E8664C0205253DA0002F955 /* JZiOSFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E8664BE205253DA0002F955 /* JZiOSFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E8664C8205258580002F955 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C7205258580002F955 /* UIColorExtension.swift */; };
 		8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C9205258CF0002F955 /* UIFontExtension.swift */; };
@@ -47,6 +48,7 @@
 		8E478F9F20845F2E00668F05 /* JZAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JZAlertController.swift; sourceTree = "<group>"; };
 		8E6D4C0E206470BF00843861 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		8E79DB3C205898060099C2CF /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
+		8E7C0B9620AA9A580064F2AC /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
 		8E8664BB205253DA0002F955 /* JZiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JZiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8664BE205253DA0002F955 /* JZiOSFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JZiOSFramework.h; sourceTree = "<group>"; };
 		8E8664BF205253DA0002F955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				8E79DB3C205898060099C2CF /* CopyableLabel.swift */,
 				8E478F9F20845F2E00668F05 /* JZAlertController.swift */,
+				8E7C0B9620AA9A580064F2AC /* HyperlinkTextView.swift */,
 			);
 			path = "Custom Components";
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				8E8664CE205259FF0002F955 /* NSLayoutConstraintExtension.swift in Sources */,
 				8E09B41C20631949004532A6 /* ToastUtil.swift in Sources */,
 				8EE3D9D520575009000CBF80 /* UIStackViewExtension.swift in Sources */,
+				8E7C0B9720AA9A580064F2AC /* HyperlinkTextView.swift in Sources */,
 				8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */,
 				8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */,
 				8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */,

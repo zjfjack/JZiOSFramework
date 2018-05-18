@@ -9,7 +9,10 @@
 
 /** Examples of usage
  public static func showHyperLinkAlertController(message: String, linkAddress: String, linkText: String) {
- let customView = HyperlinkAlertView(text: message, linkAddress: linkAddress, linkText: linkText)
+ let customView = UIView()
+ let tvHyperlink = HyperlinkTextView(text: message, linkAddress: linkAddress, linkText: linkText, font: UIFont.getSemiboldText(16), alignment: .center)
+ customView.addSubview(tvHyperlink)
+ tvHyperlink.setAnchorConstraintsFullSizeTo(view: customView, padding: 15)
  let alertController = JZAlertController(customView: customView)
  let OKAction = JZAlertAction(title: "OK")
  alertController.addAction(OKAction)
@@ -138,46 +141,6 @@ public class JZAlertAction {
         }
     }
     
-}
-
-
-public class HyperlinkAlertView: UIView {
-    
-    var text: String
-    var linkAddress: String
-    var linkText: String
-    lazy var tvText: BaseTextView = BaseTextView(text: "")
-    let padding: CGFloat = 15
-    
-    public init(text: String, linkAddress: String, linkText: String) {
-        self.text = text
-        self.linkAddress = linkAddress
-        self.linkText = linkText
-        super.init(frame: .zero)
-        
-        setupBasic()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupBasic() {
-        tvText.isScrollEnabled = false
-        tvText.isEditable = false
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        let wholeAttributes = [NSAttributedStringKey.font: UIFont.getSemiboldText(fontSize),
-                               NSAttributedStringKey.paragraphStyle: paragraphStyle]
-        let linkAttributes = [NSAttributedStringKey.link: URL(string: linkAddress)!,
-                              NSAttributedStringKey.foregroundColor: UIColor.blue] as [NSAttributedStringKey : Any]
-        let attributedStr = NSMutableAttributedString(string: text)
-        attributedStr.addAttributes(linkAttributes, range: NSString(string: text).range(of: linkText))
-        attributedStr.addAttributes(wholeAttributes, range: NSRange(location: 0, length: attributedStr.length))
-        tvText.attributedText = attributedStr
-        self.addSubview(tvText)
-        tvText.setAnchorConstraintsFullSizeTo(view: self, padding: padding)
-    }
 }
 
 

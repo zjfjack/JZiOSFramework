@@ -79,6 +79,7 @@ open class PhotoUtil {
             imagePicker.sourceType = .photoLibrary
         }
         currentVC.present(imagePicker, animated: true) {
+            imagePickerHelper!.previousStatusBarStyle = UIApplication.shared.statusBarStyle
             UIApplication.shared.statusBarStyle = .default
         }
     }
@@ -95,27 +96,28 @@ open class PhotoUtil {
         ViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true)
     }
     
-    //AssetPath can be imageLocalId(from Camera) or imageURL(from PhotoLibrary)
+    // AssetPath can be imageLocalId(from Camera) or imageURL(from PhotoLibrary)
     public static func getImageWithAssetPath(_ assetPath: String, callback: @escaping (UIImage?) -> Void) {
-        
         guard !assetPath.isEmpty else {
             callback(nil)
             return
         }
         let assets: PHFetchResult<PHAsset>
         if assetPath.contains("asset") {
-             //ImageURL
+            // ImageURL
             assets = PHAsset.fetchAssets(withALAssetURLs: [URL(string: assetPath)!], options: nil)
         } else {
-            //ImageLocalId
+            // ImageLocalId
             let fetchOptions = PHFetchOptions()
             fetchOptions.predicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.image.rawValue)
             assets = PHAsset.fetchAssets(withLocalIdentifiers: [assetPath], options: fetchOptions)
         }
         
-        //Can get some asset information with this asset, such as FileName
+        // Can get some asset information with this asset, such as FileName
         if let asset = assets.firstObject {
-            PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFill, options: nil) { (image, _) -> Void in
+            let options = PHImageRequestOptions()
+            options.isSynchronous = true // A warning and get two images back with screenshot images
+            PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFill, options: options) { (image, _) -> Void in
                 callback(image)
             }
         } else {
@@ -127,15 +129,21 @@ open class PhotoUtil {
 //Swift cannot extend objc protocol
 //https://stackoverflow.com/questions/49441953/uiimagepickercontrollerdelegate-didfinishpickingmediawithinfo-not-called/49443008#49443008
 
-public protocol ImagePickerDelegate: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func didSelectFromCamera(with localIdentifier: String, picker: UIImagePickerController)
-    func didSelectFromPhotoLibrary(with imageURL: URL, picker: UIImagePickerController)
+public protocol ImagePickerDelegate: class {
+    func didSelectFromCamera(with localIdentifier: String)
+    func didSelectFromPhotoLibrary(with imageURL: URL)
+}
+
+extension ImagePickerDelegate {
+    public func didSelectFromCamera(with localIdentifier: String) {}
+    public func didSelectFromPhotoLibrary(with imageURL: URL) {}
 }
 
 fileprivate class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     public weak var delegate: ImagePickerDelegate?
     public let picker = UIImagePickerController()
+    fileprivate var previousStatusBarStyle: UIStatusBarStyle!
     
     public override init() {
         super.init()
@@ -157,12 +165,12 @@ fileprivate class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, 
                         DispatchQueue.main.async {
                             if success {
                                 //image saved to photos library.
-                                self.delegate?.didSelectFromCamera(with: imagePlaceholder.localIdentifier, picker: picker)
+                                self.delegate?.didSelectFromCamera(with: imagePlaceholder.localIdentifier)
                             } else {
-                                picker.dismiss(animated: true, completion: nil)
                                 print(error!.localizedDescription)
                             }
                             picker.dismiss(animated: true, completion: nil)
+                            UIApplication.shared.statusBarStyle = self.previousStatusBarStyle
                         }
                     })
                 }
@@ -191,10 +199,10 @@ fileprivate class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, 
         } else {
             //photo library
             if let imageURL = info[UIImagePickerControllerReferenceURL] as? URL {
-                self.delegate?.didSelectFromPhotoLibrary(with: imageURL, picker: picker)
-            } else {
-                picker.dismiss(animated: true, completion: nil)
+                self.delegate?.didSelectFromPhotoLibrary(with: imageURL)
             }
+            picker.dismiss(animated: true, completion: nil)
+            UIApplication.shared.statusBarStyle = self.previousStatusBarStyle
         }
     }
 }
