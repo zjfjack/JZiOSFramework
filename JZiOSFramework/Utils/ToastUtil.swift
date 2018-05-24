@@ -11,16 +11,14 @@ import UIKit
 open class ToastUtil {
     
     public enum ToastPosition {
-        case top, bottom, middle
+        case top, bottom
     }
     
     static private let defaultLabelSidesPadding: CGFloat = 20
     
-    static private let defaultMidFont = UIFont.systemFont(ofSize: 13)
-    static private let defaultMidBgColor = UIColor(hex: 0xE8E8E8)
-    static private let defaultMidTextColor = UIColor.darkGray
-    static private let defaultMidHeight: CGFloat = 40
     static private let defaultMidMinWidth: CGFloat = 80
+    static private let defaultMidMaxWidth: CGFloat = 300
+    static private let defaultMidMinHeight: CGFloat = 40
     static private let defaultMidToBottom: CGFloat = 20 + UITabBarController().tabBar.frame.height
     
     static private let defaultTopBotFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
@@ -37,18 +35,12 @@ open class ToastUtil {
     static private var toastToTopConstraint: NSLayoutConstraint!
     static private var toastPosition: ToastPosition!
     
-    public static func toastMessageInTheMiddle(message: String, bgColor: UIColor? = nil, existTime: TimeInterval? = nil) {
-        guard let currentWindow = UIApplication.shared.delegate?.window!, toastView == nil else { return }
+    public static func toastMessageInTheMiddle(_ message: String, bgColor: UIColor?=nil, textColor: UIColor?=nil, existTime: TimeInterval?=nil) {
+        guard let currentWindow = UIApplication.shared.delegate?.window! else { return }
         
-        toastPosition = .middle
-        toastView = UIView()
-        toastView.backgroundColor = defaultMidBgColor
-        toastView.alpha = 0
-        toastView.layer.cornerRadius = defaultMidHeight/2
-        toastView.clipsToBounds = true
-        addToastLabel(message: message)
-        
+        let toastView = MiddleToastView(message: message, bgColor: bgColor, textColor: textColor)
         currentWindow.addSubview(toastView)
+        
         var bottomYAnchor: NSLayoutYAxisAnchor
         // Support iPhone X
         if #available(iOS 11.0, *) {
@@ -56,21 +48,21 @@ open class ToastUtil {
         } else {
             bottomYAnchor = currentWindow.bottomAnchor
         }
-        toastView.setAnchorCenterHorizontallyTo(view: currentWindow, heightAnchor: defaultMidHeight, bottomAnchor: (bottomYAnchor, -defaultMidToBottom))
+        toastView.setAnchorCenterHorizontallyTo(view: currentWindow, bottomAnchor: (bottomYAnchor, -defaultMidToBottom))
+        toastView.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultMidMinHeight).isActive = true
+        toastView.widthAnchor.constraint(lessThanOrEqualToConstant: defaultMidMaxWidth).isActive = true
         toastView.widthAnchor.constraint(greaterThanOrEqualToConstant: defaultMidMinWidth).isActive = true
         
         let delay = existTime ?? defaultExistTime
         UIView.animate(withDuration: defaultShowTime, delay: 0, options: .curveEaseInOut, animations: {
             toastView.alpha = 1
-            toastLabel.alpha = 1
+            toastView.toastLabel.alpha = 1
         }, completion: { _ in
-            
             UIView.animate(withDuration: defaultShowTime, delay: delay, options: .curveEaseInOut, animations: {
                 toastView.alpha = 0
-                toastLabel.alpha = 0
+                toastView.toastLabel.alpha = 0
             }, completion: { _ in
                 toastView.removeFromSuperview()
-                toastView = nil
             })
         })
     }
@@ -83,7 +75,7 @@ open class ToastUtil {
         let isFromTop = toastPosition == .top
         toastView = UIView()
         toastView.backgroundColor = bgColor ?? defaultTopBotBgColor
-        addToastLabel(message: message)
+        addToastLabelForTopBot(message: message)
         currentWindow.addSubview(toastView)
         
         let topAnchorTuple = isFromTop ? (currentWindow.topAnchor, -defaultTopBotHeight) : (currentWindow.bottomAnchor, 0)
@@ -163,32 +155,65 @@ open class ToastUtil {
         })
     }
     
-    private static func addToastLabel(message: String) {
-        let isMiddle = toastPosition == .middle
-        let font = isMiddle ? defaultMidFont : defaultTopBotFont
-        let textColor = isMiddle ? defaultMidTextColor : defaultTopBotTextColor
+    private static func addToastLabelForTopBot(message: String) {
         toastLabel = UILabel()
         toastLabel.text = message
-        toastLabel.font = font
-        toastLabel.textColor = textColor
+        toastLabel.font = defaultTopBotFont
+        toastLabel.textColor = defaultTopBotTextColor
         toastLabel.textAlignment = .center
         toastLabel.alpha = 0
         toastView.addSubview(toastLabel)
         let centerYConstant: CGFloat = {
-            if isMiddle {
-                return 0
-            } else {
-                // Support iPhone X
-                let statusBarHeight = UIApplication.shared.statusBarFrame.height
-                let hasNotch: Bool = statusBarHeight > 20
-                let shouldAdjustYOffset = hasNotch && UIApplication.shared.statusBarOrientation.isPortrait && toastPosition == .top
-                if shouldAdjustYOffset {
-                    return statusBarHeight/2 - 15
-                }
-                return 0
-            }
+            // Support iPhone X
+            let statusBarHeight = UIApplication.shared.statusBarFrame.height
+            let hasNotch: Bool = statusBarHeight > 20
+            let shouldAdjustYOffset = hasNotch && UIApplication.shared.statusBarOrientation.isPortrait && toastPosition == .top
+            return shouldAdjustYOffset ? statusBarHeight/2 - 15 : 0
         }()
         toastLabel.centerYAnchor.constraint(equalTo: toastView.centerYAnchor, constant: centerYConstant).isActive = true
-        toastLabel.setAnchorConstraintsEqualTo(heightAnchor: defaultMidHeight, leadingAnchor: (toastView.leadingAnchor, defaultLabelSidesPadding), trailingAnchor: (toastView.trailingAnchor, -defaultLabelSidesPadding))
+        toastLabel.setAnchorConstraintsEqualTo(leadingAnchor: (toastView.leadingAnchor, defaultLabelSidesPadding), trailingAnchor: (toastView.trailingAnchor, -defaultLabelSidesPadding))
+    }
+}
+
+fileprivate class MiddleToastView: UIView {
+    
+    private let defaultMidFont = UIFont.systemFont(ofSize: 13)
+    private let defaultMidBgColor = UIColor(hex: 0xE8E8E8)
+    private let defaultTextColor = UIColor.darkGray
+    private let labelTopBottomPadding: CGFloat = 10
+    private let labelSidesPadding: CGFloat = 20
+    
+    let toastLabel = UILabel()
+    
+    init(message: String, bgColor: UIColor?=nil, textColor: UIColor?=nil) {
+        super.init(frame: .zero)
+        self.backgroundColor = bgColor ?? defaultMidBgColor
+        toastLabel.text = message
+        toastLabel.textColor = textColor ?? defaultTextColor
+        
+        setupToastLabel()
+        setupView()
+    }
+    
+    func setupView() {
+        self.alpha = 0
+        self.addSubview(toastLabel)
+        toastLabel.setAnchorConstraintsEqualTo(topAnchor: (self.topAnchor, labelTopBottomPadding), bottomAnchor: (self.bottomAnchor, -labelTopBottomPadding), leadingAnchor: (self.leadingAnchor, labelSidesPadding), trailingAnchor: (self.trailingAnchor, -labelSidesPadding))
+    }
+    
+    func setupToastLabel() {
+        toastLabel.textAlignment = .center
+        toastLabel.alpha = 0
+        toastLabel.font = defaultMidFont
+        toastLabel.numberOfLines = 0
+        toastLabel.clipsToBounds = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        layer.cornerRadius = bounds.height / 2
     }
 }

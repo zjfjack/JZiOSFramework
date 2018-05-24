@@ -85,8 +85,9 @@ open class DeviceUtil {
                     return .faceID
                 } else {
                     // biometryType == none && BiometricStatus != unknown and notEnrolled
-                    // it means disable biometric usage
-                    return .faceID
+                    // it means disable biometric usage (not available)
+                    // TODO: NEED CHANGE THIS LINE OF CODE, WHEN OTHER FACEID DEVICE ADDED
+                    return isIPhoneX ? .faceID : .none
                 }
             } else {
                 return .touchID
@@ -137,7 +138,7 @@ open class DeviceUtil {
                         }
                     default:
                         DispatchQueue.main.async {
-                            ToastUtil.toastMessageInTheMiddle(message: laError.localizedDescription)
+                            ToastUtil.toastMessageInTheMiddle(laError.localizedDescription)
                         }
                     }
                 }
@@ -154,7 +155,7 @@ open class DeviceUtil {
                 // Face ID will not be locked for now
                 AlertUtil.presentNoFunctionAlertController(title: "Touch ID is locked now", message: "Please use password to login")
             default:
-                ToastUtil.toastMessageInTheMiddle(message: laError.localizedDescription)
+                ToastUtil.toastMessageInTheMiddle(laError.localizedDescription)
             }
         }
     }

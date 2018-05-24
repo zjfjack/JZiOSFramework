@@ -56,10 +56,10 @@ class ConfigurationManager {
         }
     }
     
-    public static func getVersionAndBuild() -> (version: String, build: String) {
+    public static var versionAndBuild: (version: String, build: String) = {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
         return (version, build)
-    }
+    }()
 }

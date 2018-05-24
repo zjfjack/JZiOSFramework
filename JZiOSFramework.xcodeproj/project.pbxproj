@@ -18,6 +18,7 @@
 		8E8664CA205258CF0002F955 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664C9205258CF0002F955 /* UIFontExtension.swift */; };
 		8E8664CC2052590F0002F955 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664CB2052590F0002F955 /* NSObjectExtension.swift */; };
 		8E8664CE205259FF0002F955 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */; };
+		8E9658FF20B267CF00004659 /* SettingsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9658FE20B267CF00004659 /* SettingsUtil.swift */; };
 		8EE3D9CC205738B1000CBF80 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */; };
 		8EE3D9CE20574B2D000CBF80 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CD20574B2D000CBF80 /* UITableViewExtension.swift */; };
 		8EE3D9D020574B80000CBF80 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D9CF20574B80000CBF80 /* UIButtonExtension.swift */; };
@@ -56,6 +57,7 @@
 		8E8664C9205258CF0002F955 /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		8E8664CB2052590F0002F955 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		8E8664CD205259FF0002F955 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
+		8E9658FE20B267CF00004659 /* SettingsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUtil.swift; sourceTree = "<group>"; };
 		8EE3D9CB205738B1000CBF80 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8EE3D9CD20574B2D000CBF80 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		8EE3D9CF20574B80000CBF80 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				8EE3D9E720576240000CBF80 /* AlertUtil.swift */,
 				8EE3D9E9205762DA000CBF80 /* PhotoUtil.swift */,
 				8E09B41B20631948004532A6 /* ToastUtil.swift */,
+				8E9658FE20B267CF00004659 /* SettingsUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				8E7C0B9720AA9A580064F2AC /* HyperlinkTextView.swift in Sources */,
 				8EE3D9F720577966000CBF80 /* BaseTextView.swift in Sources */,
 				8EE3D9D320574C76000CBF80 /* Constants.swift in Sources */,
+				8E9658FF20B267CF00004659 /* SettingsUtil.swift in Sources */,
 				8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */,
 				8E478FA020845F2E00668F05 /* JZAlertController.swift in Sources */,
 				8EE3D9EC205772B0000CBF80 /* ConfigurationManager.swift in Sources */,

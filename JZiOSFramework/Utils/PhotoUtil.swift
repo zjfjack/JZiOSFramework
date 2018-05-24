@@ -13,51 +13,57 @@ open class PhotoUtil {
     private static var imagePickerHelper: ImagePickerHelper?
     
     //MARK: - Get photos from device
-    public static func showGetPhotoOptionMenu(_ vc: UIViewController){
+    public static func showGetPhotoOptionMenu(_ currentVC: UIViewController){
         
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: AlertUtil.getActionSheetAlertStyle())
         
         let libraryButton = UIAlertAction(title: "Choose From Photos", style: .default) { _ in
-            
-            switch PHPhotoLibrary.authorizationStatus(){
-            case .denied:
-                presentAccessAlertController(false)
-            case .notDetermined:
-                PHPhotoLibrary.requestAuthorization({ (newStatus) in
-                    DispatchQueue.main.async {
-                        if (newStatus == .authorized) {
-                            presentImagePickerView(isCamera: false, currentVC: vc)
-                        } else {
-                            presentAccessAlertController(false)
-                        }
-                    }
-                })
-            default:
-                presentImagePickerView(isCamera: false, currentVC: vc)
-            }
+            presentLibraryPicker(currentVC)
         }
         
         let cameraButton = UIAlertAction(title: "Take Photo", style: .default) { _ in
-            
-            switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video){
-            case .denied:
-                presentAccessAlertController(true)
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (videoGranted: Bool) -> Void in
-                    
-                    if (videoGranted) {
-                        presentImagePickerView(isCamera: true, currentVC: vc)
-                    } else {
-                        presentAccessAlertController(true)
-                    }
-                })
-            default:
-                presentImagePickerView(isCamera: true, currentVC: vc)
-            }
+            presentCameraPicker(currentVC)
         }
         
         optionMenu.addActions([cameraButton, libraryButton, AlertUtil.getCancelAction()])
-        vc.present(optionMenu, animated: true, completion: nil)
+        currentVC.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    public static func presentLibraryPicker(_ currentVC: UIViewController) {
+        switch PHPhotoLibrary.authorizationStatus(){
+        case .denied:
+            presentAccessAlertController(false)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in
+                DispatchQueue.main.async {
+                    if (newStatus == .authorized) {
+                        presentImagePickerView(isCamera: false, currentVC: currentVC)
+                    } else {
+                        presentAccessAlertController(false)
+                    }
+                }
+            })
+        default:
+            presentImagePickerView(isCamera: false, currentVC: currentVC)
+        }
+    }
+    
+    public static func presentCameraPicker(_ currentVC: UIViewController) {
+        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video){
+        case .denied:
+            presentAccessAlertController(true)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (videoGranted: Bool) -> Void in
+                
+                if (videoGranted) {
+                    presentImagePickerView(isCamera: true, currentVC: currentVC)
+                } else {
+                    presentAccessAlertController(true)
+                }
+            })
+        default:
+            presentImagePickerView(isCamera: true, currentVC: currentVC)
+        }
     }
     
     private static func presentImagePickerView(isCamera: Bool, currentVC: UIViewController) {
@@ -65,8 +71,6 @@ open class PhotoUtil {
         imagePickerHelper = ImagePickerHelper()
         imagePickerHelper!.delegate = currentVC as? ImagePickerDelegate
         let imagePicker = imagePickerHelper!.picker
-        imagePicker.allowsEditing = false
-        imagePicker.navigationBar.isTranslucent = false
         
         if isCamera {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -84,7 +88,7 @@ open class PhotoUtil {
         }
     }
     
-    public static func presentAccessAlertController(_ isCamera: Bool) {
+    fileprivate static func presentAccessAlertController(_ isCamera: Bool) {
         
         let alertMessage = isCamera ? "We need you turn on Camera service to access camera." : "We need you turn on Photos service to access photos."
         let alertController = UIAlertController(title: nil, message: alertMessage, preferredStyle: .alert)
@@ -148,10 +152,16 @@ fileprivate class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, 
     public override init() {
         super.init()
         picker.delegate = self
+        picker.allowsEditing = false
+    }
+    
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        UIApplication.shared.statusBarStyle = previousStatusBarStyle
     }
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //camera
+        // camera
         if info[UIImagePickerControllerReferenceURL] == nil {
             
             func savePhotoAndTakeAction() {
@@ -164,7 +174,7 @@ fileprivate class ImagePickerHelper: NSObject, UIImagePickerControllerDelegate, 
                     }, completionHandler: { (success, error) -> Void in
                         DispatchQueue.main.async {
                             if success {
-                                //image saved to photos library.
+                                // image saved to photos library.
                                 self.delegate?.didSelectFromCamera(with: imagePlaceholder.localIdentifier)
                             } else {
                                 print(error!.localizedDescription)
