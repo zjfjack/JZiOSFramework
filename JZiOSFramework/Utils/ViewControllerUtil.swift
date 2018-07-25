@@ -20,7 +20,7 @@ open class ViewControllerUtil {
     }
     
     public static func showHUDView(text: String?=nil, view: UIView) {
-        
+        guard HUDView?.superview == nil else { return }
         HUDView = UIView()
         
         let loadingViewHeight: CGFloat = 120

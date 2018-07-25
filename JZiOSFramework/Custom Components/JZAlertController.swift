@@ -6,18 +6,26 @@
 //  Copyright © 2018 Jeff Zhang. All rights reserved.
 //
 
-
-/** Examples of usage
- public static func showHyperLinkAlertController(message: String, linkAddress: String, linkText: String) {
- let customView = UIView()
- let tvHyperlink = HyperlinkTextView(text: message, linkAddress: linkAddress, linkText: linkText, font: UIFont.getSemiboldText(16), alignment: .center)
- customView.addSubview(tvHyperlink)
- tvHyperlink.setAnchorConstraintsFullSizeTo(view: customView, padding: 15)
- let alertController = JZAlertController(customView: customView)
- let OKAction = JZAlertAction(title: "OK")
- alertController.addAction(OKAction)
- BaseViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true)
- }
+/*
+public static func showHyperLinkAlertController(title: String = "", message: String, linkAddress: String, linkText: String) {
+    let outsideView = UIView()
+    let insideView: UIView
+    if title.isEmpty {
+        insideView = HyperlinkTextView(text: message, linkAddress: linkAddress, linkText: linkText, font: UIFont.getSemiboldText(16), alignment: .center)
+    } else {
+        let tvHyperlink = HyperlinkTextView(text: message, linkAddress: linkAddress, linkText: linkText, font: UIFont.getRegularText(13), alignment: .center)
+        let lblTitle = BaseLabel(text: title, font: UIFont.getSemiboldText(17))
+        lblTitle.textAlignment = .center
+        insideView = UIStackView(arrangedSubviews: [lblTitle, tvHyperlink], axis: .vertical, spacing: 3)
+    }
+    
+    outsideView.addSubview(insideView)
+    insideView.setAnchorConstraintsFullSizeTo(view: outsideView, padding: 15)
+    let alertController = CustomAlertController(customView: outsideView)
+    let OKAction = CustomAlertAction(title: BaseStrings.Global.alert_ok)
+    alertController.addAction(OKAction)
+    BaseViewControllerUtil.getCurrentViewController()?.present(alertController, animated: true)
+}
  */
 
 import UIKit

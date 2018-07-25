@@ -175,4 +175,72 @@ open class ApiManager {
 }
  
  
+ 
+ 
+ 
  *****/
+
+/**
+
+import ObjectMapper
+
+public class BaseResponse: Mappable {
+    
+    public var status: String = ""
+    public var statusCode: Int = -1
+    public var errorMessage: String = ""
+    
+    public required convenience init?(map: Map){
+        self.init()
+    }
+    
+    public func mapping(map: Map) {
+        status <- map["Status"]
+        statusCode <- map["StatusCode"]
+        errorMessage <- map["ErrorMessage"]
+    }
+}
+
+public class BaseResponseObject<T>: BaseResponse where T: Mappable {
+    
+    public var data: T!
+    
+    public required convenience init?(map: Map){
+        self.init()
+    }
+    
+    public override func mapping(map: Map) {
+        super.mapping(map: map)
+        data <- map["Data"]
+    }
+}
+
+public class BaseResponseArray<T>: BaseResponse where T: Mappable {
+    
+    public var data: [T]!
+    
+    public required convenience init?(map: Map){
+        self.init()
+    }
+    
+    public override func mapping(map: Map) {
+        super.mapping(map: map)
+        data <- map["Data"]
+    }
+}
+
+public class BaseResponsePrimitive<T>: BaseResponse {
+    
+    public var data: T!
+    
+    public required convenience init?(map: Map){
+        self.init()
+    }
+    
+    public override func mapping(map: Map) {
+        super.mapping(map: map)
+        data <- map["Data"]
+    }
+}
+ 
+**/

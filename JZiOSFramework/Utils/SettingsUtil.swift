@@ -24,17 +24,17 @@ open class SettingsUtil {
 //    private func handleAllowBiometricAuthChanged(isAllow: Bool) {
 //        UserDefaults.setAllowBiometricAuth(isAllow ? .allow : .notAllow)
 //        var alertController: UIAlertController!
-//        let biometricStatus = BaseDeviceUtil.getBiometricStatus()
-//        let biometricType  = BaseDeviceUtil.getSupportBiometryType()
-//        switch biometricStatus {
+//        let biometricInfo = BaseDeviceUtil.getBiometricInfo()
+//        let biometricTypeStr = biometricInfo.type.rawValue
+//        switch biometricInfo.state {
 //        case .notAvailable:
 //            let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
 //                if let url = URL(string: UIApplicationOpenSettingsURLString) { UIApplication.shared.openURL(url) }
 //            }
-//            alertController = UIAlertController(title: "\(biometricType.rawValue) Not Enabled", message: "We need you turn on Face ID usage in Settings", preferredStyle: .alert)
+//            alertController = UIAlertController(title: "\(biometricTypeStr) Not Enabled", message: "We need you turn on \(biometricTypeStr) usage in Settings", preferredStyle: .alert)
 //            alertController.addActions([settingsAction, getCancelAction()])
 //        case .lockout:
-//            alertController = UIAlertController(title: "\(biometricType.rawValue) is locked now", message: "Please use password to login or unlock it in Settings", preferredStyle: .alert)
+//            alertController = UIAlertController(title: "\(biometricTypeStr) is locked now", message: "Please use password to login or unlock it in Settings", preferredStyle: .alert)
 //            alertController.addAction(getCancelAction("OK"))
 //        default:
 //            return

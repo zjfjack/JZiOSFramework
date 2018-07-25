@@ -36,4 +36,7 @@ extension Date {
         return Calendar.current.date(byAdding: component, value: value, to: self)!
     }
     
+    var startOfWeek: Date {
+        return Calendar(identifier: .gregorian).date(from: Calendar(identifier: .gregorian).dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+    }
 }

@@ -54,45 +54,44 @@ open class DeviceUtil {
     }
     
     public enum BiometricState {
-        case available, notAvailable, lockout, notEnrolled, unknown
+        case available
+        case notAvailable  // Currently in iOS 11 only exists in Face ID not allowed and for iPhone 4s and iPhone 5
+        case lockout, notEnrolled, unknown
     }
     
-    public static func getBiometricStatus() -> BiometricState {
+    public static func getBiometricInfo() -> (state: BiometricState, type: BiometryType) {
+        // Get state
+        let biometricState: BiometricState
         var authError: NSError?
-        if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
-            return .available
+        let laContext = LAContext()
+        if laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+            biometricState = .available
         } else {
             switch (authError as! LAError).code {
-            case .biometryLockout: return .lockout
-            case .biometryNotAvailable: return .notAvailable
-            case .biometryNotEnrolled: return .notEnrolled
-            default: return .unknown
+            case .biometryLockout: biometricState = .lockout
+            case .biometryNotAvailable: biometricState = .notAvailable
+            case .biometryNotEnrolled: biometricState = .notEnrolled
+            default: biometricState = .unknown
             }
         }
-    }
-    
-    public static func getSupportBiometryType() -> BiometryType {
-        
-        let localAuthenticationContext = LAContext()
-        let biometricStatus = getBiometricStatus()
-        if biometricStatus == .unknown || biometricStatus == .notEnrolled {
-            return .none
+        // get type
+        let biometricType: BiometryType
+        if biometricState == .unknown || biometricState == .notEnrolled {
+            biometricType = .none
         } else {
+            // Lockout, notEnrolled, notAvailable, available
             if #available(iOS 11.0, *) {
-                if localAuthenticationContext.biometryType == .touchID {
-                    return .touchID
-                } else if localAuthenticationContext.biometryType == .faceID {
-                    return .faceID
-                } else {
-                    // biometryType == none && BiometricStatus != unknown and notEnrolled
-                    // it means disable biometric usage (not available)
-                    // TODO: NEED CHANGE THIS LINE OF CODE, WHEN OTHER FACEID DEVICE ADDED
-                    return isIPhoneX ? .faceID : .none
+                switch laContext.biometryType {
+                case .touchID: biometricType = .touchID
+                case .faceID: biometricType = .faceID
+                default: biometricType = .none
                 }
             } else {
-                return .touchID
+                // Version below iOS 11, notAvailable only happens in devices do not support
+                biometricType = biometricState == .notAvailable ? .none : .touchID
             }
         }
+        return (biometricState, biometricType)
     }
     
     public static func setupBiometricAuthentication(successAction: @escaping () -> Void, fallbackAction: @escaping () -> Void) {

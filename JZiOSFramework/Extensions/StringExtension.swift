@@ -37,4 +37,33 @@ extension String {
         return lang
     }
     
+    //MARK: Transform
+    public func toHTMLParsedAttributedStr(font: UIFont, isJustified: Bool) -> NSMutableAttributedString {
+        
+        let modifiedFontString = String(format:"<span style=\"font-family: '-apple-system', 'HelveticaNeue'; font-size: \(font.pointSize)\">%@</span>", self)
+        
+        do {
+            let attributedStr = try NSAttributedString(
+                data: modifiedFontString.data(using: .unicode, allowLossyConversion: true)!,
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
+                documentAttributes: nil)
+            let attributedText = NSMutableAttributedString(attributedString: attributedStr)
+            if isJustified {
+                let paragrah = NSMutableParagraphStyle()
+                paragrah.alignment = .justified
+                paragrah.paragraphSpacing = font.lineHeight
+                attributedText.addAttributes([NSAttributedStringKey.paragraphStyle: paragrah], range: NSRange.init(location: 0, length: attributedStr.length))
+            }
+            return attributedText
+        } catch {
+            return NSMutableAttributedString(string: "")
+        }
+    }
+    
+    public func stringByReplacingFirstOccurrenceOfString(target: String, withString replaceString: String) -> String {
+        if let range = self.range(of: target) {
+            return self.replacingCharacters(in: range, with: replaceString)
+        }
+        return self
+    }
 }
