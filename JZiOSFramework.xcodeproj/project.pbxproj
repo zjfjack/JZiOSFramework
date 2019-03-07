@@ -10,6 +10,7 @@
 		8E09B41C20631949004532A6 /* ToastUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E09B41B20631948004532A6 /* ToastUtil.swift */; };
 		8E2F379F206080DA007B451A /* LocationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2F379E206080DA007B451A /* LocationUtil.swift */; };
 		8E478FA020845F2E00668F05 /* JZAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E478F9F20845F2E00668F05 /* JZAlertController.swift */; };
+		8E5FBF002123E228002F52DA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FBEFF2123E228002F52DA /* CardView.swift */; };
 		8E6D4C0F206470BF00843861 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6D4C0E206470BF00843861 /* StringExtension.swift */; };
 		8E79DB3D205898060099C2CF /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E79DB3C205898060099C2CF /* CopyableLabel.swift */; };
 		8E7C0B9720AA9A580064F2AC /* HyperlinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C0B9620AA9A580064F2AC /* HyperlinkTextView.swift */; };
@@ -47,6 +48,7 @@
 		8E09B41B20631948004532A6 /* ToastUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastUtil.swift; sourceTree = "<group>"; };
 		8E2F379E206080DA007B451A /* LocationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtil.swift; sourceTree = "<group>"; };
 		8E478F9F20845F2E00668F05 /* JZAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JZAlertController.swift; sourceTree = "<group>"; };
+		8E5FBEFF2123E228002F52DA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		8E6D4C0E206470BF00843861 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		8E79DB3C205898060099C2CF /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		8E7C0B9620AA9A580064F2AC /* HyperlinkTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperlinkTextView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				8E79DB3C205898060099C2CF /* CopyableLabel.swift */,
 				8E478F9F20845F2E00668F05 /* JZAlertController.swift */,
 				8E7C0B9620AA9A580064F2AC /* HyperlinkTextView.swift */,
+				8E5FBEFF2123E228002F52DA /* CardView.swift */,
 			);
 			path = "Custom Components";
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				8E9658FF20B267CF00004659 /* SettingsUtil.swift in Sources */,
 				8EE3D9D920575230000CBF80 /* DeviceUtil.swift in Sources */,
 				8E478FA020845F2E00668F05 /* JZAlertController.swift in Sources */,
+				8E5FBF002123E228002F52DA /* CardView.swift in Sources */,
 				8EE3D9EC205772B0000CBF80 /* ConfigurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

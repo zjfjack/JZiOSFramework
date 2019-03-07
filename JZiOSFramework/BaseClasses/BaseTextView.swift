@@ -10,6 +10,8 @@ import UIKit
 
 open class BaseTextView: UITextView {
     
+    private var placeholder: BaseLabel?
+    
     public init(text: String? = nil, font: UIFont? = nil,
                 textColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
         
@@ -24,6 +26,21 @@ open class BaseTextView: UITextView {
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func setPlaceholder(text: String) {
+        if placeholder == nil {
+            placeholder = BaseLabel(text: text, font: self.font, textColor: UIColor(hex: 0xCCCCCC))
+            placeholder!.numberOfLines = 0
+        } else {
+            placeholder!.text = text
+        }
+        self.addSubview(placeholder!)
+        placeholder!.setAnchorConstraintsEqualTo(topAnchor: (topAnchor, 0), leadingAnchor: (leadingAnchor, 2), trailingAnchor: (trailingAnchor, 0))
+    }
+    
+    public func clearPlaceholder() {
+        placeholder?.removeFromSuperview()
     }
 
 }
